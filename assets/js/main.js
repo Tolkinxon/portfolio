@@ -263,3 +263,34 @@ new Swiper('.portfolio-details-slider', {
   new PureCounter();
 
 })()
+
+const img = document.querySelector('.img')
+const imgShowing  = document.querySelector('.img-showing')
+const wrapper = document.querySelector('.wrapper')
+const closeBtn = document.querySelector('.close')
+const aloneImg = document.querySelector('.alone-img')
+const prev = document.querySelector('.prev')
+const next = document.querySelector('.next')
+
+
+img.addEventListener('click', () => {
+  wrapper.style.display = 'none'
+  imgShowing.style.display = 'flex'
+}) 
+
+closeBtn.addEventListener('click', () => {
+  wrapper.style.display = 'block'
+  imgShowing.style.display = 'none' 
+}) 
+
+prev.addEventListener('click', () => {
+  
+aloneImg.src = 'assets/img/portfolio/portfolio-details-2.jpg'
+console.log(aloneImg.src);
+})
+
+next.addEventListener('click', () => {
+  
+  aloneImg.src = 'assets/img/portfolio/portfolio-details-1.jpg'
+  console.log(aloneImg.src);
+  })
