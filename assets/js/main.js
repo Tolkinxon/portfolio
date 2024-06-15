@@ -314,8 +314,7 @@ next.addEventListener('click', () => {
   }
   aloneImg.forEach(item => {
     const width = parseFloat(window.getComputedStyle(item).width)
-    console.log(i * width);
-    item.style.transform = `translateX(-${i * width}px)`
+    item.style.transform = `translateX(-${(i * width) + 1}px)`
   })
 })
 
@@ -327,8 +326,7 @@ prev.addEventListener('click', () => {
   }
   aloneImg.forEach(item => {
     const width = parseFloat(window.getComputedStyle(item).width)
-    console.log(i * width);
-    item.style.transform = `translateX(-${i * width}px)`
+    item.style.transform = `translateX(-${(i * width) + 1}px)`
   })
   
 })
