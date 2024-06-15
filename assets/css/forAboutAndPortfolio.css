@@ -538,6 +538,7 @@
   .portfolio-details .container {
     padding-top: 20px;
     padding-bottom: 40px;
+    height: 95%;
   }
   
   .portfolio-details .portfolio-title {

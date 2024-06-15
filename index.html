@@ -39,7 +39,7 @@
 </head>
 
 <body>
-
+  <div class="main-wrapper" style="display: block">
     <div class="body-before"></div>
     <!-- ======= Mobile nav toggle button ======= -->
     <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -115,7 +115,7 @@
                     <h4>Web 3</h4>
                     <p>Web</p>
                     <div class="portfolio-links">
-                      <a href="portfolio-details.html"><i class="before"></i></a>
+                      <i class="before"></i>
                     </div>
                   </div>
                 </div>
@@ -757,7 +757,81 @@
     </footer><!-- End  Footer -->
     
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  </div>
 
+  <div class="body wrapper" style="display: none;">   
+    <main id="main">
+      <!-- ======= Portfolio Details ======= -->
+      <div id="portfolio-details" class="portfolio-details">
+        <p class="closeP" style="position: absolute; right: 70px; top: 70px;">close</p>
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-lg-8">
+              <h2 class="portfolio-title">This is an example of portfolio detail</h2>
+
+              <div class="portfolio-details-slider swiper">
+                <div class="swiper-wrapper align-items-center">
+
+                  <div class="swiper-slide">
+                      <img class="img" src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                  </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-4 portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong>: Web design</li>
+                <li><strong>Client</strong>: ASU Company</li>
+                <li><strong>Project date</strong>: 01 March, 2020</li>
+                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+              </ul>
+
+              <p>
+                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div><!-- End Portfolio Details -->
+
+    </main><!-- End #main -->
+  </div>
+
+  <div class="img-showing" style="position: absolute; width: 100%; height: 100%; background: black; z-index: 999;  align-items: center; justify-content: center;  display: none; top: 0px; left: 0px;">
+
+    <button class="close" style="position: absolute; right: 70px; top: 70px;">close</button>
+    
+    <div style="width: 100%; display: flex; justify-content: space-around; align-items: center;">
+      <p style="color: white; font-size: 20px;" class="prev">prev</p>
+
+      <div style="width: 40%; overflow: hidden; display: flex; align-items: center;">
+        <img class="alone-img" style="width: 100%; transition: 1s all ease;" src="assets/img/portfolio/portfolio-details-1.jpg " alt="">
+        <img class="alone-img" style="width: 100%; transition: 1s all ease;" src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
+        <img class="alone-img" style="width: 100%; transition: 1s all ease;" src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+      </div>
+
+      <p style="color: white; font-size: 20px;" class="next">next</p>
+    </div>
+  </div>
+  
+  
   
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

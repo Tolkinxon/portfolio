@@ -264,33 +264,72 @@ new Swiper('.portfolio-details-slider', {
 
 })()
 
-const img = document.querySelector('.img')
 const imgShowing  = document.querySelector('.img-showing')
 const wrapper = document.querySelector('.wrapper')
-const closeBtn = document.querySelector('.close')
-const aloneImg = document.querySelector('.alone-img')
-const prev = document.querySelector('.prev')
-const next = document.querySelector('.next')
+const mainWrapper = document.querySelector('.main-wrapper')
 
+const before = document.querySelector('.before')
+
+const img = document.querySelector('.img')
+
+const closeBtn = document.querySelector('.close')
+const aloneImg = document.querySelectorAll('.alone-img')
+const prev = document.querySelector('.prev')
+const next = document.querySelector('.next') 
+const closeP = document.querySelector('.closeP')
+
+// showing and hiding side when clicking
+before.addEventListener('click', () => {
+  imgShowing.style.display = 'none'
+  mainWrapper.style.display = 'none'
+  wrapper.style.display = 'block'
+})
 
 img.addEventListener('click', () => {
-  wrapper.style.display = 'none'
   imgShowing.style.display = 'flex'
+  mainWrapper.style.display = 'none'
+  wrapper.style.display = 'none'
 }) 
 
 closeBtn.addEventListener('click', () => {
+  imgShowing.style.display = 'none'
+  mainWrapper.style.display = 'none'
   wrapper.style.display = 'block'
-  imgShowing.style.display = 'none' 
 }) 
 
-prev.addEventListener('click', () => {
-  
-aloneImg.src = 'assets/img/portfolio/portfolio-details-2.jpg'
-console.log(aloneImg.src);
+closeP.addEventListener('click', () => {
+  imgShowing.style.display = 'none'
+  mainWrapper.style.display = 'block'
+  wrapper.style.display = 'none'
+}) 
+// showing and hiding side when clicking
+
+
+let i = 0
+next.addEventListener('click', () => {
+
+  i++
+  if(i == 3){
+    i = 2
+  }
+  aloneImg.forEach(item => {
+    const width = parseFloat(window.getComputedStyle(item).width)
+    console.log(i * width);
+    item.style.transform = `translateX(-${i * width}px)`
+  })
 })
 
-next.addEventListener('click', () => {
-  
-  aloneImg.src = 'assets/img/portfolio/portfolio-details-1.jpg'
-  console.log(aloneImg.src);
+prev.addEventListener('click', () => {
+
+  i--
+  if(i == -1){
+    i = 0
+  }
+  aloneImg.forEach(item => {
+    const width = parseFloat(window.getComputedStyle(item).width)
+    console.log(i * width);
+    item.style.transform = `translateX(-${i * width}px)`
   })
+  
+})
+
