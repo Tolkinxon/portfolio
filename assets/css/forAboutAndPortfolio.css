@@ -406,6 +406,9 @@
   .portfolio .portfolio-wrap .portfolio-info:hover h4, 
   .portfolio .portfolio-wrap .portfolio-info:hover p {
     background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .portfolio .portfolio-wrap .portfolio-info:hover h4 {
     text-decoration: underline;
   }
   
