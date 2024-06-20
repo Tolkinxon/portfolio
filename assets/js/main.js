@@ -268,7 +268,7 @@ const imgShowing  = document.querySelector('.img-showing')
 const wrapper = document.querySelector('.wrapper')
 const mainWrapper = document.querySelector('.main-wrapper')
 
-const before = document.querySelector('.before')
+const before = document.querySelectorAll('.before')
 
 const img = document.querySelector('.img')
 
@@ -279,10 +279,12 @@ const next = document.querySelector('.next')
 const closeP = document.querySelector('.closeP')
 
 // showing and hiding side when clicking
-before.addEventListener('click', () => {
-  imgShowing.style.display = 'none'
-  mainWrapper.style.display = 'none'
-  wrapper.style.display = 'block'
+before.forEach(item => {
+  item.addEventListener('click', () => {
+    imgShowing.style.display = 'none'
+    mainWrapper.style.display = 'none'
+    wrapper.style.display = 'block'
+  })
 })
 
 img.addEventListener('click', () => {
