@@ -22,12 +22,13 @@
 }
 
 .img-showing__prev {
-    cursor: pointer; transform: rotate(180deg);
+    cursor: pointer;
+    transform: rotate(180deg);
 }
 
 .img-showing__img-wrapper {
     width: 40%; 
-    overflow-x: scroll; 
+    overflow: hidden; 
     display: flex; 
     align-items: center;
 }
@@ -38,4 +39,17 @@
 
 .img-showing__next {
     cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+    .img-showing__next, .img-showing__prev {
+        display: none;
+    }
+
+    .img-showing__img-wrapper {
+        width: 80%;
+        overflow-x: scroll; 
+    }
+     
 }
