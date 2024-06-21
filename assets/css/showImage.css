@@ -26,7 +26,10 @@
 }
 
 .img-showing__img-wrapper {
-    width: 40%; overflow: hidden; display: flex; align-items: center;
+    width: 40%; 
+    overflow-x: scroll; 
+    display: flex; 
+    align-items: center;
 }
 
 .img-showing__alone-img {
