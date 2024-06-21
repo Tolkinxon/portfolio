@@ -272,10 +272,10 @@ const before = document.querySelectorAll('.before')
 
 const img = document.querySelector('.img')
 
-const closeBtn = document.querySelector('.close')
-const aloneImg = document.querySelectorAll('.alone-img')
-const prev = document.querySelector('.prev')
-const next = document.querySelector('.next') 
+const closeBtn = document.querySelector('.img-showing__close')
+const aloneImg = document.querySelectorAll('.img-showing__alone-img')
+const prev = document.querySelector('.img-showing__prev')
+const next = document.querySelector('.img-showing__next') 
 const closeP = document.querySelector('.closeP')
 
 // showing and hiding side when clicking

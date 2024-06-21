@@ -432,6 +432,9 @@
   /*--------------------------------------------------------------
   # Portfolio Details
   --------------------------------------------------------------*/
+  .swiper-slide {
+    overflow: hidden;
+  }
   .portfolio-details {
     padding-top: 40px;
     background: rgba(0, 0, 0, 0.8);
@@ -441,6 +444,7 @@
     top: 0;
     bottom: 0;
     overflow-y: auto;
+
   }
   
   .portfolio-details .container {
