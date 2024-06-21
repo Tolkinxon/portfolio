@@ -45,23 +45,14 @@
   --------------------------------------------------------------*/
   .section {
     overflow: hidden;
-    /* position: absolute; */
     width: 100%;
-    /* top: 140px; */
-    /* bottom: 100%; */
-    /* opacity: 0; */
     transition: ease-in-out 0.4s;
     z-index: 2;
     margin-bottom: 100px;
  }
   
-  /* .section.section-show {
-    top: 100px;
-    bottom: auto;
-    opacity: 1;
-    padding-bottom: 45px;
-  } */
   
+  .section .container-fluid, 
   .section .container {
     background: rgba(0, 0, 0, 0.9);
     padding: 30px;
@@ -309,6 +300,9 @@
   /*--------------------------------------------------------------
   # Portfolio
   --------------------------------------------------------------*/
+.portfolio > .container {
+  border: 2px solid red;
+}
 
   .portfolio .portfolio-item {
     margin-bottom: 30px;
