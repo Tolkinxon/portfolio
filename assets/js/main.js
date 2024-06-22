@@ -307,30 +307,4 @@ closeP.addEventListener('click', () => {
 // showing and hiding side when clicking
 
 
-let i = 0
-next.addEventListener('click', () => {
-
-  i++
-  if(i == 3){
-    i = 2
-  }
-  aloneImg.forEach(item => {
-    const width = parseFloat(window.getComputedStyle(item).width)
-    item.style.transform = `translateX(-${(i * width) + 1}px)`
-  })
-})
-
-prev.addEventListener('click', () => {
-
-  i--
-  if(i == -1){
-    i = 0
-  }
-  aloneImg.forEach(item => {
-    const width = parseFloat(window.getComputedStyle(item).width)
-    item.style.transform = `translateX(-${(i * width) + 1}px)`
-  })
-  
-})
-
 
