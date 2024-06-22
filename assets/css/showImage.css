@@ -27,7 +27,7 @@
 }
 
 .img-showing__img-wrapper {
-    width: 40%; 
+    width: 50%; 
     overflow: hidden; 
     display: flex; 
     align-items: center;

@@ -18,7 +18,7 @@
   
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -743,7 +743,7 @@
 
     <img class="img-showing__close" src="assets/img/close.svg" alt="">
     
-    <div class="img-showing__wrapper">
+    <!-- <div class="img-showing__wrapper">
       <img class="img-showing__prev" src="assets/img/next.svg" alt="">
 
       <div class="img-showing__img-wrapper">
@@ -753,7 +753,34 @@
       </div>
 
       <img class="img-showing__next" src="assets/img/next.svg" alt="">
+    </div> -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner d-flex align-items-center" style="max-width: 800px;">
+        <div class="carousel-item active" >
+          <img src="assets/img/portfolio/portfolio-details-1.jpg " class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" >
+          <img src="assets/img/portfolio/portfolio-details-2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" >
+          <img src="assets/img/portfolio/portfolio-details-3.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+  
   </div>
   
   
