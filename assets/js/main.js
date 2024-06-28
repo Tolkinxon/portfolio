@@ -266,52 +266,5 @@ new Swiper('.portfolio-details-slider', {
 })()
 
 
-window.addEventListener('DOMContentLoaded', () => {
-  
-const imgShowing  = document.querySelector('.img-showing')
-const wrapper = document.querySelector('.wrapper')
-const mainWrapper = document.querySelector('.main-wrapper')
 
-const before = document.querySelectorAll('.before')
-
-console.log(before);
-
-const img = document.querySelector('.img')
-
-const closeBtn = document.querySelector('.img-showing__close')
-const aloneImg = document.querySelectorAll('.img-showing__alone-img')
-const prev = document.querySelector('.img-showing__prev')
-const next = document.querySelector('.img-showing__next') 
-const closeP = document.querySelector('.closeP')
-
-// showing and hiding side when clicking
-before.forEach(item => {
-  item.addEventListener('click', () => {
-    imgShowing.style.display = 'none'
-    mainWrapper.style.display = 'none'
-    wrapper.style.display = 'block'
-  })
-})
-
-img.addEventListener('click', () => {
-  imgShowing.style.display = 'flex'
-  mainWrapper.style.display = 'none'
-  wrapper.style.display = 'none'
-}) 
-
-closeBtn.addEventListener('click', () => {
-  imgShowing.style.display = 'none'
-  mainWrapper.style.display = 'none'
-  wrapper.style.display = 'block'
-}) 
-
-closeP.addEventListener('click', () => {
-  imgShowing.style.display = 'none'
-  mainWrapper.style.display = 'block'
-  wrapper.style.display = 'none'
-}) 
-// showing and hiding side when clicking
-
-
-})
 
