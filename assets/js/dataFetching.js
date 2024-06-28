@@ -12,6 +12,7 @@ function renderForPortfolios(arr, node) {
         clonePortfolios.querySelector('.portfolio-wrapper').classList.add(`filter-${project_type}`)
         clonePortfolios.querySelector('.portfolio-img').src = cropped_photo
         clonePortfolios.querySelector('.portfolio-location').textContent = location
+        clonePortfolios.querySelector('.before').id = id
 
         fragment.appendChild(clonePortfolios)
     })
@@ -58,6 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
       imgShowing.style.display = 'none'
       mainWrapper.style.display = 'none'
       wrapper.style.display = 'block'
+
+      
     }
   })
   
