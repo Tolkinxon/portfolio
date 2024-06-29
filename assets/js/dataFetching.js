@@ -59,8 +59,6 @@ window.addEventListener('DOMContentLoaded', () => {
       imgShowing.style.display = 'none'
       mainWrapper.style.display = 'none'
       wrapper.style.display = 'block'
-
-      
     }
   })
   
@@ -83,28 +81,5 @@ window.addEventListener('DOMContentLoaded', () => {
     wrapper.style.display = 'none'
   }) 
   // showing and hiding side when clicking
-
-  // portfolio-filters side
-  portfolioFilters.addEventListener('click', (evt)=> {
-    const currentFilterCategory = evt.target
-    currentFilterCategory.classList.add('filter-active')
-
-   const fetching = async () => {
-      const request = await fetch(`http://13.233.132.195:8000/api/project/?type=${currentFilterCategory.getAttribute('data-filter')}`, {
-        headers:{
-          'accept': 'application/json',
-          'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
-        }  
-      })
-  
-      const data = await request.json()
-      renderForPortfolios(data, portfolioList)
-  }
-
-  fetching()
-  })
-  // end portfolio-filters side
-  
-  
   })
 
