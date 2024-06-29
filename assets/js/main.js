@@ -92,11 +92,26 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+  // on('scroll', '.mobile-nav-toggle', function(e) {
+
+  //   select('body').classList.toggle('mobile-nav-active')
+  //   this.classList.toggle('bi-list')
+  //   this.classList.toggle('bi-x')
+  // })
+
+  
+  // navbar hiding and showing side by scrolling
+  document.addEventListener('scroll', function (evt) {
+  if(window.scrollY == 0) {
+    select('body').classList.add('mobile-nav-active')
+  }
+  else {
+    select('body').classList.remove('mobile-nav-active')
+  }
+  })  
+  // end navbar hiding and showing side by scrolling
+
+
 
   /**
    * Scrool with ofset on links with a class name .scrollto
