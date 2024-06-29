@@ -304,9 +304,10 @@
     height: auto; 
   }
    */
-.portfolio > .container {
-  border: 2px solid red;
-}
+/* .portfolio > .container {
+  border: 2px
+   solid red;
+} */
 
   .portfolio .portfolio-item {
     margin-bottom: 30px;
