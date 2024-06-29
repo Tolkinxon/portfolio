@@ -436,9 +436,10 @@
   /*--------------------------------------------------------------
   # Portfolio Details
   --------------------------------------------------------------*/
-  .swiper-wrapper{
+  /* .swiper-wrapper{
     aspect-ratio: 3 / 2;
-  }
+    border: 2px solid red;
+  } */
 
 
   .swiper-slide {

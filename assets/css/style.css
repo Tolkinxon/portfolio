@@ -413,18 +413,26 @@ section {
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
+  color: #050d18;
+}
+
+.resume .resume-item p {
+  color: #050d18;
 }
 
 .resume .resume-item ul {
   padding-left: 20px;
+  color: #050d18;
 }
 
 .resume .resume-item ul li {
   padding-bottom: 10px;
+  color: #050d18;
 }
 
 .resume .resume-item:last-child {
   padding-bottom: 0;
+  color: #050d18;
 }
 
 .resume .resume-item::before {
@@ -437,6 +445,7 @@ section {
   top: 0;
   background: #fff;
   border: 2px solid #1f5297;
+  color: #050d18;
 }
 
 
