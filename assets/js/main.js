@@ -180,6 +180,8 @@ const portfoliosTemplate = document.querySelector('#portfolios').content
 const portfolioList = document.querySelector('.portfolio-container')
 const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__img').content
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
+const caruselTemplate = document.querySelector('#carusel-template').content
+const caruselList = document.querySelector('.carousel-inner')
 const clientCompany = document.querySelector('.client')
 const category = document.querySelector('.category')
 
@@ -204,8 +206,7 @@ function renderForPortfolios(arr, node) {
     node.appendChild(fragment)
 }
 
-function renderForPortfolioDetailsImg(data, node) {
-  console.log(data);
+function renderForPortfolioDetailsImg(data, node, template) {
   const { project_type, client, photos } = data
   clientCompany.textContent = client
   category.textContent = project_type
@@ -215,15 +216,14 @@ function renderForPortfolioDetailsImg(data, node) {
 
   photos.forEach(item => {
       const { url } = item
-      const clonePortfolioDetails = portfolioDetailsImgTemplate.cloneNode(true)
+      const clonePortfolioDetails = template.cloneNode(true)
 
       clonePortfolioDetails.querySelector('.img').src = url
     
-
       fragment.appendChild(clonePortfolioDetails)
   })
-
   node.appendChild(fragment)
+  node.children[0].classList.add('active')
 }
 
 
@@ -299,7 +299,8 @@ window.addEventListener('DOMContentLoaded', () => {
         })
   
         const data = await request.json()
-        renderForPortfolioDetailsImg(data, portfolioDetailsImgList)
+        renderForPortfolioDetailsImg(data, portfolioDetailsImgList, portfolioDetailsImgTemplate)
+        renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
 
         const img = document.querySelectorAll('.img')
         img.forEach(item => {

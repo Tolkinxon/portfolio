@@ -60,8 +60,6 @@ function renderForPortfolioDetailsImg(data, node) {
     const data = await request.json()
     renderForPortfolios(data, portfolioList)
 
-    console.log(data);
-
     
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
