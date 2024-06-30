@@ -62,6 +62,37 @@ function renderForPortfolioDetailsImg(data, node) {
 })()
 
 
+
+  window.addEventListener('load', () => {
+    let portfolioContainer = select('.portfolio-container');
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item'
+      });
+
+      let portfolioFilters = select('#portfolio-flters li', true);
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        portfolioIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+        
+        portfolioIsotope.on('arrangeComplete', function() {
+          AOS.refresh()
+        });
+      }, true);
+    }
+
+  });
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
   
   const imgShowing  = document.querySelector('.img-showing')
@@ -98,8 +129,6 @@ window.addEventListener('DOMContentLoaded', () => {
         renderForPortfolioDetailsImg(data, portfolioDetailsImgList)
 
         const img = document.querySelectorAll('.img')
-        console.log(img);
-
         img.forEach(item => {
           item.addEventListener('click', () => {
             imgShowing.style.display = 'flex'
