@@ -437,9 +437,9 @@
   /*--------------------------------------------------------------
   # Portfolio Details
   --------------------------------------------------------------*/
-  /* .swiper-wrapper-for-porfolio-details{
+  .swiper-wrapper-for-porfolio-details{
     aspect-ratio: 3 / 2;
-  } */
+  }
 
 
   .swiper-slide {
