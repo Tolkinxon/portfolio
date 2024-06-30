@@ -437,10 +437,9 @@
   /*--------------------------------------------------------------
   # Portfolio Details
   --------------------------------------------------------------*/
-  /* .swiper-wrapper{
+  .swiper-wrapper{
     aspect-ratio: 3 / 2;
-    border: 2px solid red;
-  } */
+  }
 
 
   .swiper-slide {
@@ -512,6 +511,7 @@
   .portfolio-details .swiper-pagination {
     margin-top: 20px;
     position: relative;
+    z-index: 99;
   }
   
   .portfolio-details .swiper-pagination .swiper-pagination-bullet {
