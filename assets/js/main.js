@@ -6,14 +6,6 @@
 * License: https://bootstrapmade.com/license/
 */
 
-
-
-
-
-
-
-
-// ---------------------------------------- SECOND SIDE ---------------------------------
 (function() {
   "use strict";
 
@@ -183,8 +175,7 @@
     })
   }
 
-  
-// ---------------------------------------- FIRST SIDE ---------------------------------
+  // ---------------------------------------- FIRST SIDE ---------------------------------
 const portfoliosTemplate = document.querySelector('#portfolios').content
 const portfolioList = document.querySelector('.portfolio-container')
 const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__img').content
@@ -236,7 +227,7 @@ function renderForPortfolioDetailsImg(data, node) {
 }
 
 
-const dataFetching = async () => {
+(async () => {
     const request = await fetch('http://13.233.132.195:8000/api/project/?type=all', {
       headers:{
         'accept': 'application/json',
@@ -246,8 +237,6 @@ const dataFetching = async () => {
 
     const data = await request.json()
     renderForPortfolios(data, portfolioList)
-    console.log(document.querySelector('.portfolio-item'));
-
 
       let portfolioContainer = select('.portfolio-container');
       if (portfolioContainer) {
@@ -272,21 +261,9 @@ const dataFetching = async () => {
             AOS.refresh()
           });
         }, true);
-        
-
       }
-}
 
-dataFetching()
-
-
-
-
-
-
-
-
-
+})()
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -368,35 +345,33 @@ window.addEventListener('DOMContentLoaded', () => {
   /**
    * Porfolio isotope and filter
    */
+  // window.addEventListener('load', () => {
+  //   let portfolioContainer = select('.portfolio-container');
+  //   if (portfolioContainer) {
+  //     let portfolioIsotope = new Isotope(portfolioContainer, {
+  //       itemSelector: '.portfolio-item'
+  //     });
 
+  //     let portfolioFilters = select('#portfolio-flters li', true);
 
-    // window.addEventListener('load', () => {
-    //   let portfolioContainer = select('.portfolio-container');
-    //   if (portfolioContainer) {
-    //     let portfolioIsotope = new Isotope(portfolioContainer, {
-    //       itemSelector: '.portfolio-item'
-    //     });
-  
-    //     let portfolioFilters = select('#portfolio-flters li', true);
-  
-    //     on('click', '#portfolio-flters li', function(e) {
-    //       e.preventDefault();
-    //       portfolioFilters.forEach(function(el) {
-    //         el.classList.remove('filter-active');
-    //       });
-    //       this.classList.add('filter-active');
-  
-    //       portfolioIsotope.arrange({
-    //         filter: this.getAttribute('data-filter')
-    //       });
-          
-    //       portfolioIsotope.on('arrangeComplete', function() {
-    //         AOS.refresh()
-    //       });
-    //     }, true);
-    //   }
-    // });
+  //     on('click', '#portfolio-flters li', function(e) {
+  //       e.preventDefault();
+  //       portfolioFilters.forEach(function(el) {
+  //         el.classList.remove('filter-active');
+  //       });
+  //       this.classList.add('filter-active');
 
+  //       portfolioIsotope.arrange({
+  //         filter: this.getAttribute('data-filter')
+  //       });
+        
+  //       portfolioIsotope.on('arrangeComplete', function() {
+  //         AOS.refresh()
+  //       });
+  //     }, true);
+  //   }
+
+  // });
 
 /**
    * Initiate portfolio details lightbox 
@@ -471,9 +446,6 @@ new Swiper('.portfolio-details-slider', {
   new PureCounter();
 
 })()
-
-// ---------------------------------------- SECOND SIDE ---------------------------------
-
 
 
 

@@ -59,11 +59,10 @@ function renderForPortfolioDetailsImg(data, node) {
 
     const data = await request.json()
     renderForPortfolios(data, portfolioList)
-})()
 
+    console.log(data);
 
-
-  window.addEventListener('load', () => {
+    
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -89,7 +88,10 @@ function renderForPortfolioDetailsImg(data, node) {
       }, true);
     }
 
-  });
+})()
+
+
+
 
 
 
