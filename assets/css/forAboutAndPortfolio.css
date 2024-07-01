@@ -439,6 +439,9 @@
   --------------------------------------------------------------*/
   .swiper-wrapper-for-porfolio-details{
     aspect-ratio: 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 
@@ -524,4 +527,24 @@
   .portfolio-details .swiper-pagination .swiper-pagination-bullet-active {
     background-color: #18d26e;
   }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
   

@@ -111,6 +111,13 @@
   })  
   // end navbar hiding and showing side by scrolling
 
+  
+  const hero = document.querySelector('#hero')
+
+  hero.addEventListener('click', (evt) => {
+    select('body').classList.remove('mobile-nav-active')
+  })
+
 
 
   /**
@@ -228,7 +235,7 @@ function renderForPortfolioDetailsImg(data, node, template) {
 
 
 (async () => {
-    const request = await fetch('http://13.233.132.195:8000/api/project/?type=all', {
+    const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
       headers:{
         'accept': 'application/json',
         'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
@@ -291,7 +298,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       const fetchingProjectsWithId = async () => {
-        const request = await fetch(`http://13.233.132.195:8000/api/project/${id}`, {
+        const request = await fetch(`https://test.itpoint.uz/api/project/${id}`, {
           headers:{
             'accept': 'application/json',
             'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
