@@ -167,10 +167,13 @@
 //   })
 
 const resumeEducationTemplate = document.querySelector('#resume-education').content
-const resumeEducationList = document.querySelector('.resume-item__list')
+const resumeEducationList = document.querySelector('.resume-ecucation-item__list')
+const resumeExperienceTemplate = document.querySelector('#resume-experience').content
+const resumeExperienceList = document.querySelector('.resume-experience-item__list')
 
 
-function renderForResume( arr, node, template ) {
+
+function renderForResumeEducation( arr, node, template ) {
 
   node.innerHTML = null
   const fragment = document.createDocumentFragment()
@@ -191,16 +194,55 @@ function renderForResume( arr, node, template ) {
   node.appendChild(fragment)
 }
 
+
+function renderForResumeExperience( arr, node, template ) {
+
+  node.innerHTML = null
+  const fragment = document.createDocumentFragment()
+
+  arr.forEach(item => {
+      const { year_range, title, position_tasks, sub_title } = item
+      const cloneTemplate = template.cloneNode(true)
+
+      cloneTemplate.querySelector('.resume-experience__sub_title').textContent = sub_title
+      cloneTemplate.querySelector('.resume-experience__year_range').textContent = year_range
+      cloneTemplate.querySelector('.resume-experience__title').textContent = title
+
+      position_tasks.forEach((item) => {
+        const li = document.createElement('li')
+        li.textContent = item.text
+        cloneTemplate.querySelector('.resume-experience__text-list').appendChild(li)
+      })
+    
+
+      fragment.appendChild(cloneTemplate)
+  })
+
+  node.appendChild(fragment)
+}
+
 (async () => {
-    const request = await fetch('https://test.itpoint.uz/api/career/?type=education', {
+    const requestEducation = await fetch('https://test.itpoint.uz/api/career/?type=education', {
       headers:{
         'accept': 'application/json',
         'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
       }  
     })
 
-    const data = await request.json()
-    renderForResume(data, resumeEducationList, resumeEducationTemplate)
+    const dataEducation = await requestEducation.json()
+    renderForResumeEducation(dataEducation, resumeEducationList, resumeEducationTemplate)
+
+    //--------------------------------------------------------------------------------------------------
+
+    const requestExperience = await fetch('https://test.itpoint.uz/api/career/?type=experience', {
+      headers:{
+        'accept': 'application/json',
+        'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
+      }  
+    })
+
+    const dataExperience = await requestExperience.json()
+    renderForResumeExperience(dataExperience, resumeExperienceList,resumeExperienceTemplate)
 
 })()
 
