@@ -12,16 +12,33 @@
     overflow: hidden;
 }
 
+#carouselExampleIndicators {
+    height: 100%;
+    width: 50%;
+}
+
+.carousel-inner {
+    width: 100% !important;
+    height: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
 .img-showing__close {
     position: absolute; 
     right: 5%; 
     top: 5%;
 }
 
-@media (max-width: 1140px) {
-    .carousel {
-        width: 70%;
+@media (max-width: 1000px) {
+    #carouselExampleIndicators {
+        width: 100%;
+        height: 70%;
     }
+
      
 } 
 
