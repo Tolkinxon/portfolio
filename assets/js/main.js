@@ -256,6 +256,45 @@ function renderForTestimonial( arr, node, template ) {
   node.appendChild(fragment)
 }
 
+// (() => {
+//   fetch('https://test.itpoint.uz/api/project/?type=all', {
+//     headers:{
+//       'accept': 'application/json',
+//       'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
+//     }  
+//   })
+//   .then(data => data.json())
+//   .then(response => {
+//     renderForPortfolios(response, portfolioList)
+
+//     let portfolioContainer = select('.portfolio-container');
+//     if (portfolioContainer) {
+//       let portfolioIsotope = new Isotope(portfolioContainer, {
+//         itemSelector: '.portfolio-item'
+//       });
+
+//       let portfolioFilters = select('#portfolio-flters li', true);
+
+//       on('click', '#portfolio-flters li', function(e) {
+//         e.preventDefault();
+//         portfolioFilters.forEach(function(el) {
+//           el.classList.remove('filter-active');
+//         });
+//         this.classList.add('filter-active');
+
+//         portfolioIsotope.arrange({
+//           filter: this.getAttribute('data-filter')
+//         });
+        
+//         portfolioIsotope.on('arrangeComplete', function() {
+//           AOS.refresh()
+//         });
+//       }, true);
+//     }
+//   })
+
+// })()
+
 
 (async () => {
     const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
@@ -267,31 +306,35 @@ function renderForTestimonial( arr, node, template ) {
 
     const data = await request.json()
     renderForPortfolios(data, portfolioList)
+    
 
-      let portfolioContainer = select('.portfolio-container');
-      if (portfolioContainer) {
-        let portfolioIsotope = new Isotope(portfolioContainer, {
-          itemSelector: '.portfolio-item'
+  setTimeout(() => {
+    let portfolioContainer = select('.portfolio-container');
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item'
+      });
+
+      let portfolioFilters = select('#portfolio-flters li', true);
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
         });
-  
-        let portfolioFilters = select('#portfolio-flters li', true);
-  
-        on('click', '#portfolio-flters li', function(e) {
-          e.preventDefault();
-          portfolioFilters.forEach(function(el) {
-            el.classList.remove('filter-active');
-          });
-          this.classList.add('filter-active');
-  
-          portfolioIsotope.arrange({
-            filter: this.getAttribute('data-filter')
-          });
-          
-          portfolioIsotope.on('arrangeComplete', function() {
-            AOS.refresh()
-          });
-        }, true);
-      }
+        this.classList.add('filter-active');
+
+        portfolioIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+        
+        portfolioIsotope.on('arrangeComplete', function() {
+          AOS.refresh()
+        });
+      }, true);
+    }
+  }, 100)
+
 
   //--------------------------------------------------------------------------------------------------
   // data fetching for testimonial side
