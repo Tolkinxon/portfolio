@@ -189,6 +189,8 @@ const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
 const caruselTemplate = document.querySelector('#carusel-template').content
 const caruselList = document.querySelector('.carousel-inner')
+const testimonialItemTemplate = document.querySelector('#testimonial-item-template').content
+const testimonialItemList = document.querySelector('.testimonial-item-template-list')
 const clientCompany = document.querySelector('.client')
 const category = document.querySelector('.category')
 
@@ -233,6 +235,27 @@ function renderForPortfolioDetailsImg(data, node, template) {
   node.children[0].classList.add('active')
 }
 
+function renderForTestimonial( arr, node, template ) {
+
+  node.innerHTML = null
+  const fragment = document.createDocumentFragment()
+
+  arr.forEach(item => {
+      const { job, full_name, avatar, comment } = item
+      const cloneTemplate = template.cloneNode(true)
+
+      cloneTemplate.querySelector('.testimonial-item__comment').textContent = comment
+      cloneTemplate.querySelector('.testimonial-item__full_name').textContent = full_name
+      cloneTemplate.querySelector('.testimonial-item__job').textContent = job
+      cloneTemplate.querySelector('.testimonial-item__avatar').src = avatar
+
+
+      fragment.appendChild(cloneTemplate)
+  })
+
+  node.appendChild(fragment)
+}
+
 
 (async () => {
     const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
@@ -269,6 +292,45 @@ function renderForPortfolioDetailsImg(data, node, template) {
           });
         }, true);
       }
+
+  //--------------------------------------------------------------------------------------------------
+  // data fetching for testimonial side
+  const requestTestimonialItem = await fetch('https://test.itpoint.uz/api/commentary', {
+    headers:{
+      'accept': 'application/json',
+      'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
+    }  
+  })
+
+  const dataTestimonialItem = await requestTestimonialItem.json()
+  console.log(dataTestimonialItem);
+  renderForTestimonial(dataTestimonialItem, testimonialItemList, testimonialItemTemplate)
+
+  new Swiper('.testimonials-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      }
+    }
+  });
 
 })()
 
@@ -424,31 +486,31 @@ const portfolioDetailsLightbox = GLightbox({
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
+  // new Swiper('.testimonials-slider', {
+  //   speed: 600,
+  //   loop: true,
+  //   autoplay: {
+  //     delay: 5000,
+  //     disableOnInteraction: false
+  //   },
+  //   slidesPerView: 'auto',
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     type: 'bullets',
+  //     clickable: true
+  //   },
+  //   breakpoints: {
+  //     320: {
+  //       slidesPerView: 1,
+  //       spaceBetween: 20
+  //     },
 
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
+  //     1200: {
+  //       slidesPerView: 3,
+  //       spaceBetween: 20
+  //     }
+  //   }
+  // });
 
   /**
    * Animation on scroll

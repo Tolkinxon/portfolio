@@ -300,9 +300,8 @@
               <h2>Testimonials</h2>
             </div>
             <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-              <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
+              <div class="swiper-wrapper testimonial-item-template-list">
+   <!--             <div class="swiper-slide">
                   <div class="testimonial-item">
                     <p>
                       <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -313,7 +312,7 @@
                     <h3>Saul Goodman</h3>
                     <h4>Ceo &amp; Founder</h4>
                   </div>
-                </div><!-- End testimonial item -->
+                </div>
                 
                 <div class="swiper-slide">
                   <div class="testimonial-item">
@@ -326,7 +325,7 @@
                     <h3>Sara Wilsson</h3>
                     <h4>Designer</h4>
                   </div>
-                </div><!-- End testimonial item -->
+                </div>
                 
                 <div class="swiper-slide">
                   <div class="testimonial-item">
@@ -339,7 +338,7 @@
                     <h3>Jena Karlis</h3>
                     <h4>Store Owner</h4>
                   </div>
-                </div><!-- End testimonial item -->
+                </div>
                 
                 <div class="swiper-slide">
                   <div class="testimonial-item">
@@ -352,7 +351,7 @@
                     <h3>Matt Brandon</h3>
                     <h4>Freelancer</h4>
                   </div>
-                </div><!-- End testimonial item -->
+                </div>
                 
                 <div class="swiper-slide">
                   <div class="testimonial-item">
@@ -365,12 +364,11 @@
                     <h3>John Larson</h3>
                     <h4>Entrepreneur</h4>
                   </div>
-                </div><!-- End testimonial item -->
-                
+                </div>
+              -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
-            
             <div class="owl-carousel testimonials-carousel">
               
             </div>
@@ -703,6 +701,23 @@
         <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li> -->
       </ul>
     </div>
+  </template>
+
+  <template id="testimonial-item-template">
+    <div class="swiper-slide">
+      <div class="testimonial-item">
+        <p>
+          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+          <span class="testimonial-item__comment">
+
+          </span>
+          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+        </p>
+        <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img testimonial-item__avatar" alt="">
+        <h3 class="testimonial-item__full_name">Sara Wilsson</h3>
+        <h4 class="testimonial-item__job">Designer</h4>
+      </div>
+    </div><!-- End testimonial item -->
   </template>
 
   <script src="assets/js/dataFetching.js"></script>

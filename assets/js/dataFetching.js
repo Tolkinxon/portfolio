@@ -173,6 +173,7 @@ const resumeExperienceList = document.querySelector('.resume-experience-item__li
 
 
 
+
 function renderForResumeEducation( arr, node, template ) {
 
   node.innerHTML = null
@@ -221,7 +222,10 @@ function renderForResumeExperience( arr, node, template ) {
   node.appendChild(fragment)
 }
 
+
+
 (async () => {
+  //data fetching for resume education side
     const requestEducation = await fetch('https://test.itpoint.uz/api/career/?type=education', {
       headers:{
         'accept': 'application/json',
@@ -232,8 +236,8 @@ function renderForResumeExperience( arr, node, template ) {
     const dataEducation = await requestEducation.json()
     renderForResumeEducation(dataEducation, resumeEducationList, resumeEducationTemplate)
 
-    //--------------------------------------------------------------------------------------------------
-
+  //--------------------------------------------------------------------------------------------------
+  // data fetching for experience side
     const requestExperience = await fetch('https://test.itpoint.uz/api/career/?type=experience', {
       headers:{
         'accept': 'application/json',
@@ -243,6 +247,8 @@ function renderForResumeExperience( arr, node, template ) {
 
     const dataExperience = await requestExperience.json()
     renderForResumeExperience(dataExperience, resumeExperienceList,resumeExperienceTemplate)
+
+ 
 
 })()
 
