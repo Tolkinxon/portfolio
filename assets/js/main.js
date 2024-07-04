@@ -99,14 +99,20 @@
   //   this.classList.toggle('bi-x')
   // })
 
-  
+  let counter = 0
   // navbar hiding and showing side by scrolling
   document.addEventListener('scroll', function (evt) {
+    
+
   if(window.scrollY == 0) {
     select('body').classList.add('mobile-nav-active')
   }
   else {
     select('body').classList.remove('mobile-nav-active')
+      if(counter == 0){
+        const allFilterButton = document.querySelector('.all').click()
+        counter++
+      }
   }
   })  
   // end navbar hiding and showing side by scrolling
@@ -308,7 +314,7 @@ function renderForTestimonial( arr, node, template ) {
     renderForPortfolios(data, portfolioList)
     
 
-  setTimeout(() => {
+  
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -333,7 +339,9 @@ function renderForTestimonial( arr, node, template ) {
         });
       }, true);
     }
-  }, 100)
+
+
+
 
 
   //--------------------------------------------------------------------------------------------------
@@ -565,6 +573,7 @@ const portfolioDetailsLightbox = GLightbox({
       once: true,
       mirror: false
     })
+  
   });
 
   /**
