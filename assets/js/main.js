@@ -314,7 +314,10 @@ function renderForTestimonial( arr, node, template ) {
     renderForPortfolios(data, portfolioList)
     
 
-  
+    if(data) {
+      document.body.style.overflow = 'auto'
+    }
+    
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
