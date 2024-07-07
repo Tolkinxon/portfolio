@@ -357,7 +357,6 @@ function renderForTestimonial( arr, node, template ) {
   })
 
   const dataTestimonialItem = await requestTestimonialItem.json()
-  console.log(dataTestimonialItem);
   renderForTestimonial(dataTestimonialItem, testimonialItemList, testimonialItemTemplate)
 
   new Swiper('.testimonials-slider', {
@@ -422,8 +421,10 @@ window.addEventListener('DOMContentLoaded', () => {
         })
   
         const data = await request.json()
+        console.log(data);
         renderForPortfolioDetailsImg(data, portfolioDetailsImgList, portfolioDetailsImgTemplate)
         renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
+ 
 
         const img = document.querySelectorAll('.img')
         img.forEach(item => {
