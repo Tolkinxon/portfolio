@@ -207,12 +207,12 @@ function renderForPortfolios(arr, node) {
     const fragment = document.createDocumentFragment()
 
     arr.forEach(item => {
-        const { location, cropped_photo, project_type, id } = item
+        const { title, cropped_photo, project_type, id } = item
         const clonePortfolios = portfoliosTemplate.cloneNode(true)
 
         clonePortfolios.querySelector('.portfolio-wrapper').classList.add(`${project_type}`)
         clonePortfolios.querySelector('.portfolio-img').src = cropped_photo
-        clonePortfolios.querySelector('.portfolio-location').textContent = location
+        clonePortfolios.querySelector('.portfolio-location').textContent = title
         clonePortfolios.querySelector('.before').id = id
 
         fragment.appendChild(clonePortfolios)
@@ -311,6 +311,7 @@ function renderForTestimonial( arr, node, template ) {
     })
 
     const data = await request.json()
+    console.log(data);
     renderForPortfolios(data, portfolioList)
     
 
@@ -438,10 +439,10 @@ window.addEventListener('DOMContentLoaded', () => {
         new Swiper('.portfolio-details-slider', {
           speed: 400,
           loop: true,
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false
-          },
+          // autoplay: {
+          //   delay: 400,
+          //   disableOnInteraction: false
+          // },
           pagination: {
             el: '.swiper-pagination',
             type: 'bullets',

@@ -291,18 +291,61 @@ h6 {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 64px;
+  font-size: 100px;
   font-weight: 700;
   line-height: 56px;
   color: #fff;
 }
 
+
 #hero p {
   color: #fff;
   margin-bottom: 50px;
-  font-size: 26px;
+  font-size: 45px;
   font-family: "Poppins", sans-serif;
 }
+
+@media (max-width: 1920px) {
+  #hero h1 {
+    font-size: 90px;
+  }
+
+  #hero p {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 1720px) {
+  #hero h1 {
+    font-size: 80px;
+  }
+
+  #hero p {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 1520px) {
+  #hero h1 {
+    font-size: 70px;
+  }
+
+  #hero p {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1440px) {
+  #hero h1 {
+    font-size: 64px;
+  }
+
+  #hero p {
+    font-size: 26px;
+  }
+}
+
+
 
 #hero p span {
   color: #fff;
