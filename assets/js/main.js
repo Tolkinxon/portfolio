@@ -230,15 +230,15 @@ function renderForPortfolioDetailsImg(data, node, template) {
   const fragment = document.createDocumentFragment()
 
   photos.forEach(item => {
-      const { url } = item
+      const { url, id } = item
       const clonePortfolioDetails = template.cloneNode(true)
 
       clonePortfolioDetails.querySelector('.img').src = url
+      clonePortfolioDetails.querySelector('.img').id = id
     
       fragment.appendChild(clonePortfolioDetails)
   })
   node.appendChild(fragment)
-  node.children[0].classList.add('active')
 }
 
 function renderForTestimonial( arr, node, template ) {
@@ -311,7 +311,6 @@ function renderForTestimonial( arr, node, template ) {
     })
 
     const data = await request.json()
-    console.log(data);
     renderForPortfolios(data, portfolioList)
     
 
@@ -422,7 +421,7 @@ window.addEventListener('DOMContentLoaded', () => {
         })
   
         const data = await request.json()
-        console.log(data);
+ 
         renderForPortfolioDetailsImg(data, portfolioDetailsImgList, portfolioDetailsImgTemplate)
         renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
  
@@ -431,6 +430,14 @@ window.addEventListener('DOMContentLoaded', () => {
         img.forEach(item => {
           item.addEventListener('click', () => {
             imgShowing.style.display = 'flex'
+            imgShowing.querySelectorAll('.img-carusel').forEach(itemCarusel => {
+              if(itemCarusel.id == item.id){
+                itemCarusel.parentElement.classList.add('active')
+              }
+              else {
+                itemCarusel.parentElement.classList.remove('active')
+              }
+            })
             mainWrapper.style.display = 'none'
             wrapper.style.display = 'none'
         }) 
@@ -438,11 +445,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // codes for zoom-in and zoom-out
         const carusel = document.querySelector('#carouselExampleIndicators')
-        const imgCarusel = document.querySelector('.img-carusel')
+        const imgCarusel = document.querySelectorAll('.img-carusel')
 
-        imgCarusel.addEventListener('click', ()=>{
-          carusel.classList.toggle('zoom')
-          imgCarusel.classList.toggle('zoom-out')
+        imgCarusel.forEach(item => {
+          item.addEventListener('click', ()=>{
+            carusel.classList.toggle('zoom')
+            item.classList.toggle('zoom-out')
+          })
         })
         // end codes for zoom-in and zoom-out
 
