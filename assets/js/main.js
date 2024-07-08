@@ -436,6 +436,16 @@ window.addEventListener('DOMContentLoaded', () => {
         }) 
         })
 
+        // codes for zoom-in and zoom-out
+        const carusel = document.querySelector('#carouselExampleIndicators')
+        const imgCarusel = document.querySelector('.img-carusel')
+
+        imgCarusel.addEventListener('click', ()=>{
+          carusel.classList.toggle('zoom')
+          imgCarusel.classList.toggle('zoom-out')
+        })
+        // end codes for zoom-in and zoom-out
+
         new Swiper('.portfolio-details-slider', {
           speed: 400,
           loop: true,

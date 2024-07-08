@@ -17,6 +17,10 @@
     width: 50%;
 }
 
+.zoom {
+    width: 100% !important;
+}
+
 .carousel-inner {
     width: 100% !important;
     height: 100%;
@@ -48,4 +52,13 @@
 
 .carousel-control-next {
     right: -15%;
+}
+
+
+.img-carusel {
+    cursor: zoom-in;
+}
+
+.zoom-out {
+    cursor: zoom-out;
 }
