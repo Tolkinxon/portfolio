@@ -37,6 +37,7 @@
                 php_email_form_submit(thisForm, action, formData);
               })
             } catch(error) {
+              console.log(error);
               displayError(thisForm, error);
             }
           });
@@ -57,14 +58,14 @@
     })
     .then(response => {
       if( response.ok ) {
-        return response.text();
+        return response.json();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
       }
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if (data.detail == 'success') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {

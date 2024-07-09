@@ -222,6 +222,7 @@ function renderForPortfolios(arr, node) {
 }
 
 function renderForPortfolioDetailsImg(data, node, template) {
+  console.log(data);
   const { project_type, client, photos } = data
   clientCompany.textContent = client
   category.textContent = project_type
