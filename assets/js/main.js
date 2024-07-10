@@ -321,8 +321,10 @@ function renderForTestimonial( arr, node, template ) {
     })
 
     const data = await request.json()
-    renderForPortfolios(data, portfolioList)
-    
+
+    const shuffleddata = data.sort((a, b) => 0.5 - Math.random());
+    const slicedShuffledData = shuffleddata.slice(0, 8)
+    renderForPortfolios(slicedShuffledData, portfolioList)
 
     if(data) {
       document.body.style.overflow = 'auto'
