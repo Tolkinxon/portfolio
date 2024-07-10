@@ -227,7 +227,6 @@ function renderForPortfolios(arr, node) {
 }
 
 function renderForPortfolioDetailsImg(data, node, template) {
-  console.log(data);
   const {location, description, url, title, photos } = data
 
   titlePortfolioDetails.textContent = title
@@ -325,6 +324,13 @@ function renderForTestimonial( arr, node, template ) {
     const shuffleddata = data.sort((a, b) => 0.5 - Math.random());
     const slicedShuffledData = shuffleddata.slice(0, 8)
     renderForPortfolios(slicedShuffledData, portfolioList)
+
+    const seeMore = document.querySelector('.portfolio__see-more')
+
+    seeMore.addEventListener('click',  () => {
+      console.log('hello world');
+      renderForPortfolios(shuffleddata, portfolioList)
+    })
 
     if(data) {
       document.body.style.overflow = 'auto'
