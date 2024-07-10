@@ -14,7 +14,7 @@
 
 #carouselExampleIndicators {
     width: 50%;
-    /* height: 100%; */
+    height: 100%;
 }
 
 .zoom {
@@ -57,6 +57,7 @@
 .img-carusel {
     width: 100%;
     cursor: zoom-in;
+    object-fit: contain;
 }
 
 .zoom-out {

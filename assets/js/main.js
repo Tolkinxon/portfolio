@@ -98,24 +98,26 @@
   //   this.classList.toggle('bi-list')
   //   this.classList.toggle('bi-x')
   // })
+  
 
   let counter = 0
-  // navbar hiding and showing side by scrolling
+  // // navbar hiding and showing side by scrolling
   document.addEventListener('scroll', function (evt) {
-    
-
+  
   if(window.scrollY == 0) {
     select('body').classList.add('mobile-nav-active')
   }
   else {
-    select('body').classList.remove('mobile-nav-active')
       if(counter == 0){
-        const allFilterButton = document.querySelector('.all').click()
-        counter++
+      document.querySelector('.all').click()
+      counter++
+  
       }
+    select('body').classList.remove('mobile-nav-active')
   }
   })  
   // end navbar hiding and showing side by scrolling
+
 
   
   const hero = document.querySelector('#hero')

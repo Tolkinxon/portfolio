@@ -166,6 +166,7 @@
 //   // ------------------------- showing and hiding side when clicking ----------------------
 //   })
 
+
 const resumeEducationTemplate = document.querySelector('#resume-education').content
 const resumeEducationList = document.querySelector('.resume-ecucation-item__list')
 const resumeExperienceTemplate = document.querySelector('#resume-experience').content
