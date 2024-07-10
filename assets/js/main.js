@@ -199,8 +199,11 @@ const caruselTemplate = document.querySelector('#carusel-template').content
 const caruselList = document.querySelector('.carousel-inner')
 const testimonialItemTemplate = document.querySelector('#testimonial-item-template').content
 const testimonialItemList = document.querySelector('.testimonial-item-template-list')
-const clientCompany = document.querySelector('.client')
-const category = document.querySelector('.category')
+
+const titlePortfolioDetails = document.querySelector('.title-portfolio-details')
+const locationPortfoioDetails = document.querySelector('.location-portfolio-details')
+const urlPortfoioDetails = document.querySelector('.url-portfolio-details')
+const descriptionPortfoioDetails = document.querySelector('.description-portfolio-details')
 
 
 
@@ -225,9 +228,13 @@ function renderForPortfolios(arr, node) {
 
 function renderForPortfolioDetailsImg(data, node, template) {
   console.log(data);
-  const { project_type, client, photos } = data
-  clientCompany.textContent = client
-  category.textContent = project_type
+  const {location, description, url, title, photos } = data
+
+  titlePortfolioDetails.textContent = title
+  locationPortfoioDetails.textContent = location
+  descriptionPortfoioDetails.textContent = description
+  urlPortfoioDetails.textContent = url
+
 
   node.innerHTML = null
   const fragment = document.createDocumentFragment()
