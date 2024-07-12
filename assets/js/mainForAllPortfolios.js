@@ -406,8 +406,9 @@
     }) 
     
     closeP.addEventListener('click', () => {
-      location.replace("http://127.0.0.1:5500/index.html")
-      console.log('hello world');
+      imgShowing.style.display = 'none'
+      mainWrapper.style.display = 'block'
+      wrapper.style.display = 'none'
     }) 
     // ------------------------- showing and hiding side when clicking ----------------------
     })

@@ -325,17 +325,6 @@ function renderForTestimonial( arr, node, template ) {
     const slicedShuffledData = shuffleddata.slice(0, 8)
     renderForPortfolios(slicedShuffledData, portfolioList)
 
-    const seeMore = document.querySelector('.portfolio__see-more')
-    const closingForPortfolio = document.querySelectorAll('.colsing-for-portfolio')
-
-
-    seeMore.addEventListener('click',  () => {
-      closingForPortfolio.forEach(item => {
-        item.style.display = 'none'
-      })
-      renderForPortfolios(shuffleddata, portfolioList)
-    })
-
     if(data) {
       document.body.style.overflow = 'auto'
     }
