@@ -326,9 +326,13 @@ function renderForTestimonial( arr, node, template ) {
     renderForPortfolios(slicedShuffledData, portfolioList)
 
     const seeMore = document.querySelector('.portfolio__see-more')
+    const closingForPortfolio = document.querySelectorAll('.colsing-for-portfolio')
+
 
     seeMore.addEventListener('click',  () => {
-      console.log('hello world');
+      closingForPortfolio.forEach(item => {
+        item.style.display = 'none'
+      })
       renderForPortfolios(shuffleddata, portfolioList)
     })
 
@@ -360,6 +364,9 @@ function renderForTestimonial( arr, node, template ) {
         });
       }, true);
     }
+
+
+
 
 
 
