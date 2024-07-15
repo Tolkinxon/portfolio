@@ -15,21 +15,32 @@
 #carouselExampleIndicators {
     width: 50%;
     height: 100%;
+    object-fit: contain;
 }
 
 .zoom {
     width: 100% !important;
-    height: auto !important;
+
+}
+
+.zoom .carousel-inner {
+    height: auto;
+}
+
+.zoom .carousel-item {
+    height: auto;
 }
 
 .carousel-inner {
     width: 100% !important;
     height: 100%;
+    object-fit: contain;
 }
 
 .carousel-item {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .img-showing__close {
@@ -55,9 +66,9 @@
 
 
 .img-carusel {
-    width: 100%;
+
     cursor: zoom-in;
-    object-fit: contain;
+ 
 }
 
 .zoom-out {

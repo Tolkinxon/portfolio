@@ -328,7 +328,7 @@
   
   
         const fetchingProjectsWithId = async () => {
-          const request = await fetch(`https://test.itpoint.uz/api/project/${id}`, {
+          const request = await fetch(`https://test.itpoint.uz/api/project/${id}/`, {
             headers:{
               'accept': 'application/json',
               'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
