@@ -46,7 +46,7 @@
     <i class="bi bi-list mobile-nav-toggle visually-hidden" ></i>
     
     <!-- ======= Header ======= -->
-    <header id="header" class=" ">
+    <header id="header" class="display-none-for-see-more">
       <div class="d-flex flex-column">
         
         <div class="profile">
@@ -76,7 +76,7 @@
     </header><!-- End Header -->
     
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="  d-flex flex-column justify-content-center align-items-center">
+    <section id="hero" class="display-none-for-see-more  d-flex flex-column justify-content-center align-items-center">
       <div class="hero-container  " data-aos="fade-in">
         <h1 class=" ">Alikhan Yusupaliyev</h1>
         <p class=" ">I'm <span class="typed" data-typed-items="3D Visualizator, Freelancer"></span></p>
@@ -106,18 +106,19 @@
                 </ul>
               </div>
             </div>
-            
             <div class="row portfolio-container">
-              
+              <div class="d-flex justify-content-center align-items-center portfolio-loader-wrapper" style="height: 200px; display: none;">
+                <div class="loader"></div>
+              </div>
             </div>
             <div class="portfolio__see-more-wrapper">
-              <a href="allPortfolios.html" class="portfolio__see-more">See more</a>
+              <p class="portfolio__see-more">See more</p>
             </div>
           </div><!-- End Portfolio Section -->
         </div>
       </div>
       
-      <div id="about" class="body">
+      <div id="about" class="body display-none-for-see-more">
         <!-- ======= About Section ======= -->
         <div  class="section about ">
           
@@ -397,7 +398,7 @@
       </div>
       
       <!-- ======= Resume Section ======= -->
-      <section id="resume" class="resume  ">
+      <section id="resume" class="resume  display-none-for-see-more">
         <div class="container">
           
           <div class="section-title">
@@ -469,7 +470,7 @@
       
       
       <!-- ======= Services Section ======= -->
-      <section id="services" class="services  ">
+      <section id="services" class="services  display-none-for-see-more">
         <div class="container">
           
           <div class="section-title">
@@ -509,7 +510,7 @@
       
       
       <!-- ======= Contact Section ======= -->
-      <section id="contact" class="contact  ">
+      <section id="contact" class="contact  display-none-for-see-more">
         <div class="container">
           
           <div class="section-title">
@@ -749,6 +750,5 @@
       <!-- Template Main JS File -->
       <script src="assets/js/main.js"></script>
 </body>
-
 
 </html>

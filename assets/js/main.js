@@ -325,8 +325,11 @@ function renderForTestimonial( arr, node, template ) {
     const slicedShuffledData = shuffleddata.slice(0, 8)
     renderForPortfolios(slicedShuffledData, portfolioList)
 
+    const loader = document.querySelector('.portfolio-loader-wrapper')
+    console.log(loader);
     if(data) {
       document.body.style.overflow = 'auto'
+      loader.style.display = 'none'
     }
     
     let portfolioContainer = select('.portfolio-container');
@@ -408,13 +411,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.wrapper')
   const mainWrapper = document.querySelector('.main-wrapper')
   const portfolioContainer = document.querySelector('.portfolio-container')
-  const before = document.querySelectorAll('.before')
   const closeBtn = document.querySelector('.img-showing__close')
-  const aloneImg = document.querySelectorAll('.img-showing__alone-img')
-  const prev = document.querySelector('.img-showing__prev')
-  const next = document.querySelector('.img-showing__next') 
   const closeP = document.querySelector('.closeP')
-  const portfolioFilters = document.querySelector('#portfolio-flters')
+  const seeMore = document.querySelector('.portfolio__see-more')
+  const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
+
+  seeMore.addEventListener('click', () => {
+    displayNoneForSeeMore.forEach(item => {
+      item.classList.add('visually-hidden')
+    })
+  })
+
 
 
 //------------------------ portfolios openning and closing side -------------------------
