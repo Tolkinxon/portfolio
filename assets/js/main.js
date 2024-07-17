@@ -326,7 +326,37 @@ function renderForTestimonial( arr, node, template ) {
     renderForPortfolios(slicedShuffledData, portfolioList)
 
     const loader = document.querySelector('.portfolio-loader-wrapper')
-    console.log(loader);
+    const seeMore = document.querySelector('.portfolio__see-more')
+    const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
+    const closeIcon = document.querySelector('.close-icon')
+    
+
+    seeMore.addEventListener('click', () => {
+      closeIcon.style.display = 'block'
+      displayNoneForSeeMore.forEach(item => {
+        item.classList.add('visually-hidden')
+      })
+      seeMore.classList.add('visually-hidden')
+      renderForPortfolios(shuffleddata, portfolioList)
+      window.scrollTo({
+        top: 1,
+      })
+    })
+
+   
+
+    closeIcon.addEventListener('click', () => {
+      closeIcon.style.display = 'none'
+      displayNoneForSeeMore.forEach(item => {
+        item.classList.remove('visually-hidden')
+      })
+      seeMore.classList.remove('visually-hidden')
+      renderForPortfolios(slicedShuffledData, portfolioList)
+      window.scrollTo({
+        top: 800,
+      })
+    })
+
     if(data) {
       document.body.style.overflow = 'auto'
       loader.style.display = 'none'
@@ -413,14 +443,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const portfolioContainer = document.querySelector('.portfolio-container')
   const closeBtn = document.querySelector('.img-showing__close')
   const closeP = document.querySelector('.closeP')
-  const seeMore = document.querySelector('.portfolio__see-more')
-  const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
 
-  seeMore.addEventListener('click', () => {
-    displayNoneForSeeMore.forEach(item => {
-      item.classList.add('visually-hidden')
-    })
-  })
 
 
 
