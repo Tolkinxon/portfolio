@@ -307,7 +307,6 @@ function renderForTestimonial( arr, node, template ) {
 //       }, true);
 //     }
 //   })
-
 // })()
 
 
@@ -325,43 +324,6 @@ function renderForTestimonial( arr, node, template ) {
     const slicedShuffledData = shuffleddata.slice(0, 8)
     renderForPortfolios(slicedShuffledData, portfolioList)
 
-    const loader = document.querySelector('.portfolio-loader-wrapper')
-    const seeMore = document.querySelector('.portfolio__see-more')
-    const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
-    const closeIcon = document.querySelector('.close-icon')
-    
-
-    seeMore.addEventListener('click', () => {
-      closeIcon.style.display = 'block'
-      displayNoneForSeeMore.forEach(item => {
-        item.classList.add('visually-hidden')
-      })
-      seeMore.classList.add('visually-hidden')
-      renderForPortfolios(shuffleddata, portfolioList)
-      window.scrollTo({
-        top: 1,
-      })
-    })
-
-   
-
-    closeIcon.addEventListener('click', () => {
-      closeIcon.style.display = 'none'
-      displayNoneForSeeMore.forEach(item => {
-        item.classList.remove('visually-hidden')
-      })
-      seeMore.classList.remove('visually-hidden')
-      renderForPortfolios(slicedShuffledData, portfolioList)
-      window.scrollTo({
-        top: 800,
-      })
-    })
-
-    if(data) {
-      document.body.style.overflow = 'auto'
-      loader.style.display = 'none'
-    }
-    
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -387,10 +349,95 @@ function renderForTestimonial( arr, node, template ) {
       }, true);
     }
 
+    const loader = document.querySelector('.portfolio-loader-wrapper')
+    const seeMore = document.querySelector('.portfolio__see-more')
+    const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
+    const closeIcon = document.querySelector('.close-icon')
+    
+
+    seeMore.addEventListener('click', () => {
+      closeIcon.style.display = 'block'
+      displayNoneForSeeMore.forEach(item => {
+        item.classList.add('visually-hidden')
+      })
+      seeMore.classList.add('visually-hidden')
+      renderForPortfolios(shuffleddata, portfolioList)
+      let portfolioContainer = select('.portfolio-container');
+      if (portfolioContainer) {
+        let portfolioIsotope = new Isotope(portfolioContainer, {
+          itemSelector: '.portfolio-item'
+        });
+  
+        let portfolioFilters = select('#portfolio-flters li', true);
+  
+        on('click', '#portfolio-flters li', function(e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function(el) {
+            el.classList.remove('filter-active');
+          });
+          this.classList.add('filter-active');
+  
+          portfolioIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          
+          portfolioIsotope.on('arrangeComplete', function() {
+            AOS.refresh()
+          });
+        }, true);
+      }
+      window.scrollTo({
+        top: 1,
+      })
+    })
+
+   
+
+    closeIcon.addEventListener('click', () => {
+      closeIcon.style.display = 'none'
+      displayNoneForSeeMore.forEach(item => {
+        item.classList.remove('visually-hidden')
+      })
+      seeMore.classList.remove('visually-hidden')
+      renderForPortfolios(slicedShuffledData, portfolioList)
+
+      let portfolioContainer = select('.portfolio-container');
+      if (portfolioContainer) {
+        let portfolioIsotope = new Isotope(portfolioContainer, {
+          itemSelector: '.portfolio-item'
+        });
+  
+        let portfolioFilters = select('#portfolio-flters li', true);
+  
+        on('click', '#portfolio-flters li', function(e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function(el) {
+            el.classList.remove('filter-active');
+          });
+          this.classList.add('filter-active');
+  
+          portfolioIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          
+          portfolioIsotope.on('arrangeComplete', function() {
+            AOS.refresh()
+          });
+        }, true);
+      }
+      window.scrollTo({
+        top: 800,
+      })
+    })
+
+    if(data) {
+      document.body.style.overflow = 'auto'
+      loader.style.display = 'none'
 
 
-
-
+      
+    }
+    
 
 
 
