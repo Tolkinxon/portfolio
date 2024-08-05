@@ -272,7 +272,7 @@ function renderForTestimonial( arr, node, template ) {
 }
 
 // (() => {
-//   fetch('https://test.itpoint.uz/api/project/?type=all', {
+//   fetch('http://13.233.132.195:8000/api/project/?type=all', {
 //     headers:{
 //       'accept': 'application/json',
 //       'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
@@ -311,8 +311,8 @@ function renderForTestimonial( arr, node, template ) {
 
 
 (async () => {
-    const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
-      headers:{
+    const request = await fetch('http://13.233.132.195:8000/api/project/?type=all', {
+      headers:{                  
         'accept': 'application/json',
         'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
       }  
@@ -443,7 +443,7 @@ function renderForTestimonial( arr, node, template ) {
 
   //--------------------------------------------------------------------------------------------------
   // data fetching for testimonial side
-  const requestTestimonialItem = await fetch('https://test.itpoint.uz/api/commentary', {
+  const requestTestimonialItem = await fetch('http://13.233.132.195:8000/api/commentary', {
     headers:{
       'accept': 'application/json',
       'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
@@ -504,7 +504,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       const fetchingProjectsWithId = async () => {
-        const request = await fetch(`https://test.itpoint.uz/api/project/${id}`, {
+        const request = await fetch(`http://13.233.132.195:8000/api/project/${id}`, {
           headers:{
             'accept': 'application/json',
             'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
