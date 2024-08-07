@@ -227,7 +227,7 @@ function renderForResumeExperience( arr, node, template ) {
 
 (async () => {
   //data fetching for resume education side
-    const requestEducation = await fetch('http://13.233.132.195:8000/api/career/?type=education', {
+    const requestEducation = await fetch('https://test.itpoint.uz/api/career/?type=education', {
       headers:{
         'accept': 'application/json',
         'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
@@ -239,7 +239,7 @@ function renderForResumeExperience( arr, node, template ) {
 
   //--------------------------------------------------------------------------------------------------
   // data fetching for experience side
-    const requestExperience = await fetch('http://13.233.132.195:8000/api/career/?type=experience', {
+    const requestExperience = await fetch('https://test.itpoint.uz/api/career/?type=experience', {
       headers:{
         'accept': 'application/json',
         'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
