@@ -320,9 +320,25 @@ function renderForTestimonial( arr, node, template ) {
 
     const data = await request.json()
 
-    const shuffleddata = data.sort((a, b) => 0.5 - Math.random());
-    const slicedShuffledData = shuffleddata.slice(0, 8)
-    renderForPortfolios(slicedShuffledData, portfolioList)
+    const archvizData = await data.filter(item => item.project_type == 'archviz')
+          .sort((a, b) => 0.5 - Math.random());
+    const interiorData = await data.filter(item => item.project_type == 'interior')
+          .sort((a, b) => 0.5 - Math.random());
+    const exteriorData = await data.filter(item => item.project_type == 'exterior')
+          .sort((a, b) => 0.5 - Math.random());
+
+          function sliceData(arr) {
+            if(arr.length > 3){
+              return arr.slice(0, 3)
+            }
+            else {
+              return arr
+            }
+          }
+
+    const allRandomSlicedData = [...sliceData(archvizData),...sliceData(interiorData),...sliceData(exteriorData)]
+   
+    renderForPortfolios(allRandomSlicedData, portfolioList)
 
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
