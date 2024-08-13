@@ -103,15 +103,17 @@
   let counter = 0
   // // navbar hiding and showing side by scrolling
   document.addEventListener('scroll', function (evt) {
-  
   if(window.scrollY == 0) {
     select('body').classList.add('mobile-nav-active')
   }
   else {
       if(counter == 0){
-      document.querySelector('.all').click()
-      counter++
-  
+        document.querySelector('.archviz').click()
+        counter++
+      }
+      if(counter == 1){
+        document.querySelector('.all').click()
+        counter++
       }
     select('body').classList.remove('mobile-nav-active')
   }
@@ -376,8 +378,8 @@ function renderForTestimonial( arr, node, template ) {
       displayNoneForSeeMore.forEach(item => {
         item.classList.add('visually-hidden')
       })
-      seeMore.classList.add('visually-hidden')
-      renderForPortfolios(shuffleddata, portfolioList)
+      seeMore.classList.add('visually-hidden')  
+      renderForPortfolios(data, portfolioList)
       let portfolioContainer = select('.portfolio-container');
       if (portfolioContainer) {
         let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -415,7 +417,7 @@ function renderForTestimonial( arr, node, template ) {
         item.classList.remove('visually-hidden')
       })
       seeMore.classList.remove('visually-hidden')
-      renderForPortfolios(slicedShuffledData, portfolioList)
+      renderForPortfolios(allRandomSlicedData, portfolioList)
 
       let portfolioContainer = select('.portfolio-container');
       if (portfolioContainer) {
