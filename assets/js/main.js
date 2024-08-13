@@ -405,8 +405,9 @@ function renderForTestimonial( arr, node, template ) {
         }, true);
       }
       window.scrollTo({
-        top: 1,
+        top: 0,
       })
+      counter = 0
     })
 
    
@@ -444,8 +445,9 @@ function renderForTestimonial( arr, node, template ) {
         }, true);
       }
       window.scrollTo({
-        top: 800,
+        top: 0,
       })
+      counter = 0
     })
 
     if(data) {
