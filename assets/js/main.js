@@ -6,12 +6,33 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+
+// function autoRefresh() {
+//   window.location = window.location.href;
+// }
+
+
+// if(localStorage.getItem('reload') !== 'true') {
+//   autoRefresh()
+// }
+
+
+
+// window.addEventListener('beforeunload', (event) => {
+//   localStorage.clear();  
+// });
+
+
+
+
+
 (function() {
   "use strict";
-
   /**
    * Easy selector helper function
    */
+
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -110,6 +131,7 @@
       if(counter == 0){
         document.querySelector('.archviz').click()
         counter++
+      
       }
       if(counter == 1){
         document.querySelector('.all').click()
@@ -407,7 +429,12 @@ function renderForTestimonial( arr, node, template ) {
       window.scrollTo({
         top: 0,
       })
-      counter = 0
+      setTimeout(() => {
+        document.querySelector('.archviz').click();
+      },20)     
+      setTimeout(() => {
+        document.querySelector('.all').click();
+      },40)  
     })
 
    
