@@ -431,10 +431,10 @@ function renderForTestimonial( arr, node, template ) {
       })
       setTimeout(() => {
         document.querySelector('.archviz').click();
-      },1000)     
+      },10000)     
       setTimeout(() => {
         document.querySelector('.all').click();
-      },2000)  
+      },20000)  
     })
 
    
