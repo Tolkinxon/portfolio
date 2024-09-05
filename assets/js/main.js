@@ -24,9 +24,6 @@
 // });
 
 
-
-
-
 (function() {
   "use strict";
   /**
@@ -41,6 +38,9 @@
       return document.querySelector(el)
     }
   }
+
+
+ 
 
   /**
    * Easy event listener function
@@ -113,31 +113,34 @@
   /**
    * Mobile nav toggle
    */
-  // on('scroll', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function(e) {
 
-  //   select('body').classList.toggle('mobile-nav-active')
-  //   this.classList.toggle('bi-list')
-  //   this.classList.toggle('bi-x')
-  // })
+    select('body').classList.toggle('mobile-nav-active')
+    this.classList.toggle('bi-x')
+    this.classList.toggle('bi-list')
+  })
   
 
   let counter = 0
   // // navbar hiding and showing side by scrolling
   document.addEventListener('scroll', function (evt) {
   if(window.scrollY == 0) {
-    select('body').classList.add('mobile-nav-active')
+    select('.mobile-nav-toggle').click()
   }
   else {
-      if(counter == 0){
-        document.querySelector('.archviz').click()
-        counter++
+      // if(counter == 0){
+      //   document.querySelector('.exterior').click()
+      //   counter++
       
-      }
-      if(counter == 1){
-        document.querySelector('.all').click()
-        counter++
-      }
-    select('body').classList.remove('mobile-nav-active')
+      // }
+      // if(counter == 1){
+      //   document.querySelector('.all').click()
+      //   counter++
+      // }
+      select('body').classList.remove('mobile-nav-active')
+      select('.mobile-nav-toggle').classList.remove('bi-x')
+      select('.mobile-nav-toggle').classList.add('bi-list')
+   
   }
   })  
   // end navbar hiding and showing side by scrolling
@@ -230,16 +233,63 @@ const urlPortfoioDetails = document.querySelector('.url-portfolio-details')
 const descriptionPortfoioDetails = document.querySelector('.description-portfolio-details')
 
 
+ // Isotope side
+//  let portfolioContainer = select('.portfolio-container');
+ 
+//  let portfolioIsotope = new Isotope(portfolioContainer, {
+//    itemSelector: '.portfolio-item'
+//  });
+
+//  let portfolioFilters = select('#portfolio-flters li', true);
+
+//  on('click', '#portfolio-flters li', function(e) {
+//    e.preventDefault();
+//    console.log('hello');
+   
+//    portfolioFilters.forEach(function(el) {
+//      el.classList.remove('filter-active');
+//    });
+//    this.classList.add('filter-active');
+
+//    portfolioIsotope.arrange({
+//      filter: this.getAttribute('data-filter')
+//    });
+//  }, true);
+// Isotope side
+
+const portfoioContainer = document.querySelector('.portfolio-container');
+// Initialize Isotope grid
+var grid = new Isotope(portfoioContainer, {
+    itemSelector: '.portfolio-item',
+    layoutMode: 'fitRows',  
+});
+
+document.getElementById('portfolio-flters').addEventListener('click', function(event) {
+  if (event.target.tagName === 'LI') {
+      var filterValue = event.target.getAttribute('data-filter');
+      console.log(filterValue);
+      
+      grid.arrange({ filter: filterValue });
+  }
+});
+
+
 
 function renderForPortfolios(arr, node) {
-    node.innerHTML = null
+    node.innerHTML = '';
     const fragment = document.createDocumentFragment()
 
     arr.forEach(item => {
         const { title, cropped_photo, project_type, id } = item
         const clonePortfolios = portfoliosTemplate.cloneNode(true)
+        const testImg = document.createElement('img');
 
         clonePortfolios.querySelector('.portfolio-wrapper').classList.add(`${project_type}`)
+
+        testImg.src = cropped_photo
+        let aspecRatio = testImg.naturalHeight / testImg.naturalWidth;  
+
+        clonePortfolios.querySelector('.portfolio-img').height = `${Math.abs(362 * aspecRatio)}`
         clonePortfolios.querySelector('.portfolio-img').src = cropped_photo
         clonePortfolios.querySelector('.portfolio-location').textContent = title
         clonePortfolios.querySelector('.before').id = id
@@ -247,7 +297,13 @@ function renderForPortfolios(arr, node) {
         fragment.appendChild(clonePortfolios)
     })
 
+    let fragmentArr = []
+    for(let item of fragment.children) {
+        fragmentArr.push(item);
+    }
+
     node.appendChild(fragment)
+    grid.appended(fragmentArr);
 }
 
 function renderForPortfolioDetailsImg(data, node, template) {
@@ -344,8 +400,7 @@ function renderForTestimonial( arr, node, template ) {
 
     const data = await request.json()
 
-    const archvizData = await data.filter(item => item.project_type == 'archviz')
-          .sort((a, b) => 0.5 - Math.random());
+ 
     const interiorData = await data.filter(item => item.project_type == 'interior')
           .sort((a, b) => 0.5 - Math.random());
     const exteriorData = await data.filter(item => item.project_type == 'exterior')
@@ -360,34 +415,9 @@ function renderForTestimonial( arr, node, template ) {
             }
           }
 
-    const allRandomSlicedData = [...sliceData(archvizData),...sliceData(interiorData),...sliceData(exteriorData)]
+    const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
    
     renderForPortfolios(allRandomSlicedData, portfolioList)
-
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
-      });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
 
     const loader = document.querySelector('.portfolio-loader-wrapper')
     const seeMore = document.querySelector('.portfolio__see-more')
@@ -402,39 +432,16 @@ function renderForTestimonial( arr, node, template ) {
       })
       seeMore.classList.add('visually-hidden')  
       renderForPortfolios(data, portfolioList)
-      let portfolioContainer = select('.portfolio-container');
-      if (portfolioContainer) {
-        let portfolioIsotope = new Isotope(portfolioContainer, {
-          itemSelector: '.portfolio-item'
-        });
-  
-        let portfolioFilters = select('#portfolio-flters li', true);
-  
-        on('click', '#portfolio-flters li', function(e) {
-          e.preventDefault();
-          portfolioFilters.forEach(function(el) {
-            el.classList.remove('filter-active');
-          });
-          this.classList.add('filter-active');
-  
-          portfolioIsotope.arrange({
-            filter: this.getAttribute('data-filter')
-          });
-          
-          portfolioIsotope.on('arrangeComplete', function() {
-            AOS.refresh()
-          });
-        }, true);
-      }
+      
       window.scrollTo({
         top: 0,
       })
-      setTimeout(() => {
-        document.querySelector('.archviz').click();
-      },10000)     
-      setTimeout(() => {
-        document.querySelector('.all').click();
-      },20000)  
+      // setTimeout(() => {
+      //   document.querySelector('.exterior').click();
+      // },10000)     
+      // setTimeout(() => {
+      //   document.querySelector('.all').click();
+      // },20000)  
     })
 
    
@@ -447,30 +454,7 @@ function renderForTestimonial( arr, node, template ) {
       seeMore.classList.remove('visually-hidden')
       renderForPortfolios(allRandomSlicedData, portfolioList)
 
-      let portfolioContainer = select('.portfolio-container');
-      if (portfolioContainer) {
-        let portfolioIsotope = new Isotope(portfolioContainer, {
-          itemSelector: '.portfolio-item'
-        });
-  
-        let portfolioFilters = select('#portfolio-flters li', true);
-  
-        on('click', '#portfolio-flters li', function(e) {
-          e.preventDefault();
-          portfolioFilters.forEach(function(el) {
-            el.classList.remove('filter-active');
-          });
-          this.classList.add('filter-active');
-  
-          portfolioIsotope.arrange({
-            filter: this.getAttribute('data-filter')
-          });
-          
-          portfolioIsotope.on('arrangeComplete', function() {
-            AOS.refresh()
-          });
-        }, true);
-      }
+
       window.scrollTo({
         top: 0,
       })
@@ -480,9 +464,6 @@ function renderForTestimonial( arr, node, template ) {
     if(data) {
       document.body.style.overflow = 'auto'
       loader.style.display = 'none'
-
-
-      
     }
     
 
