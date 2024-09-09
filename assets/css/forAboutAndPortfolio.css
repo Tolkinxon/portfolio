@@ -300,10 +300,10 @@
   /*--------------------------------------------------------------
   # Portfolio
   --------------------------------------------------------------*/
-  /* .portfolio-container {
-    height: auto; 
+  .portfolio-container {
+    display: flex !important;
   }
-   */
+  
 /* .portfolio > .container {
   border: 2px
    solid red;
