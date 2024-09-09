@@ -194,6 +194,7 @@
   // ---------------------------------------- FIRST SIDE ---------------------------------
 const portfoliosTemplate = document.querySelector('#portfolios').content
 const portfolioList = document.querySelector('.portfolio-container')
+const portfolioItem = document.querySelectorAll('.portfolio-item')
 const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__img').content
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
 const caruselTemplate = document.querySelector('#carusel-template').content
@@ -212,38 +213,41 @@ const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-m
 const closeIcon = document.querySelector('.close-icon')
 const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
 
+
+
  /**
    * Porfolio isotope and filter
    */  
+
  let portfolioContainer = select('.portfolio-container');
 
-   let portfolioIsotope = new Isotope(portfolioContainer, {
-     itemSelector: '.portfolio-item'
+ let portfolioIsotope = new Isotope(portfolioContainer, {
+   itemSelector: '.portfolio-item'
+ });
+
+ let portfolioFilters = select('#portfolio-flters li', true);
+
+ on('click', '#portfolio-flters li', function(e) {
+   e.preventDefault();
+   portfolioFilters.forEach(function(el) {
+     el.classList.remove('filter-active');
    });
+   this.classList.add('filter-active');
 
-   let portfolioFilters = select('#portfolio-flters li', true);
-
-   on('click', '#portfolio-flters li', function(e) {
-     e.preventDefault();
-     portfolioFilters.forEach(function(el) {
-       el.classList.remove('filter-active');
-     });
-     this.classList.add('filter-active');
-
-     portfolioIsotope.arrange({
-       filter: this.getAttribute('data-filter')
-     });
-     
-     portfolioIsotope.on('arrangeComplete', function() {
-       AOS.refresh()
-     });
-   }, true);
+   portfolioIsotope.arrange({
+     filter: this.getAttribute('data-filter')
+   });
+   
+   portfolioIsotope.on('arrangeComplete', function() {
+     AOS.refresh()
+   });
+ }, true);
 
 
 
 
 function renderForPortfolios(arr, node) {
-  portfolioIsotope.appended([]); 
+
     node.innerHTML = '';
     const fragment = document.createDocumentFragment()
 
@@ -271,7 +275,7 @@ function renderForPortfolios(arr, node) {
     }
 
     node.appendChild(fragment)
-    portfolioIsotope.appended(fragmentArr); 
+  
 }
 
 function renderForPortfolioDetailsImg(data, node, template) {
@@ -351,8 +355,21 @@ function renderForTestimonial( arr, node, template ) {
     const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
 
     
+  // renderForPortfolios(allRandomSlicedData, portfolioList)
 
-    renderForPortfolios(allRandomSlicedData, portfolioList)
+          // data.forEach((item, idx) => {
+          //   const { title, cropped_photo, project_type, id } = item
+            
+          //   if(idx < portfolioItem.length){
+          //     portfolioItem[idx].classList.remove('visually-hidden')
+          //     portfolioItem[idx].classList.add(`${project_type}`)
+          //     portfolioItem[idx].querySelector('.portfolio-img').src = cropped_photo
+          //     portfolioItem[idx].querySelector('.portfolio-location').textContent = title
+          //     portfolioItem[idx].querySelector('.before').id = id
+          //   }
+         
+          // })
+  
    
 
   
@@ -382,7 +399,10 @@ function renderForTestimonial( arr, node, template ) {
       });
     }, true);
 
-    renderForPortfolios(data, portfolioContainerSeeMore)
+   
+ 
+
+    // renderForPortfolios(data, portfolioContainerSeeMore)
         
 
 
@@ -686,6 +706,7 @@ const portfolioDetailsLightbox = GLightbox({
 
 })()
 
-
-
+//https://alikhan-portfolio.s3.amazonaws.com/static/projects/01_View01%20jpg866882
+//https://alikhan-portfolio.s3.amazonaws.com/static/projects/saytga.jpg
+//https://alikhan-portfolio.s3.amazonaws.com/static/projects/GH_Infinity_Ext_Ren_05.06.2022%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg
 
