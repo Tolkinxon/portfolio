@@ -197,56 +197,6 @@ const portfolioContainerSeeMore = document.querySelector('.portfolio-container-s
 
 
 
- /**
-   * Porfolio isotope and filter
-   */  
- let portfolioContainer = select('.portfolio-container');
-
- let portfolioIsotope = new Isotope(portfolioContainer, {
-   itemSelector: '.portfolio-item'
- });
-
- let portfolioFilters = select('#portfolio-flters li', true);
-
- on('click', '#portfolio-flters li', function(e) {
-   e.preventDefault();
-   portfolioFilters.forEach(function(el) {
-     el.classList.remove('filter-active');
-   });
-   this.classList.add('filter-active');
-
-   portfolioIsotope.arrange({
-     filter: this.getAttribute('data-filter')
-   });
-   
-   portfolioIsotope.on('arrangeComplete', function() {
-     AOS.refresh()
-   });
- }, true);
-
-// see more side ----------------------------------------------------------
- let portfolioContainerSeeMoreList = select('.portfolio-container-see-more');
- let portfolioIsotopeSeeMore = new Isotope(portfolioContainerSeeMoreList, {
-   itemSelector: '.portfolio-item'
- });
-
- let portfolioFiltersSeeMore = select('#portfolio-flters li', true);
-
- on('click', '#portfolio-flters li', function(e) {
-   e.preventDefault();
-   portfolioFiltersSeeMore.forEach(function(el) {
-     el.classList.remove('filter-active');
-   });
-   this.classList.add('filter-active');
-
-   portfolioIsotopeSeeMore.arrange({
-     filter: this.getAttribute('data-filter')
-   });
-   
-   portfolioIsotopeSeeMore.on('arrangeComplete', function() {
-     AOS.refresh()
-   });
- }, true);
 
  
 
@@ -275,6 +225,8 @@ function renderForPortfolioDetailsImg(data, node, template) {
   node.appendChild(fragment)
 }
 
+
+
 new Swiper('.testimonials-slider', {
   speed: 600,
   loop: true,
@@ -300,6 +252,11 @@ new Swiper('.testimonials-slider', {
     }
   }
 });
+
+
+
+
+
 
 seeMore.addEventListener('click', () => {
   closeIcon.style.display = 'block'
@@ -549,4 +506,5 @@ const portfolioDetailsLightbox = GLightbox({
 //https://alikhan-portfolio.s3.amazonaws.com/static/projects/01_View01%20jpg866882
 //https://alikhan-portfolio.s3.amazonaws.com/static/projects/saytga.jpg
 //https://alikhan-portfolio.s3.amazonaws.com/static/projects/GH_Infinity_Ext_Ren_05.06.2022%20%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg
+
 

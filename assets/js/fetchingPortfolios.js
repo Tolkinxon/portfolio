@@ -34,20 +34,14 @@ function renderForPortfolios(arr, node) {
 
     node.appendChild(fragment)
 
-    setTimeout(() => {
-    const isotopScript  = document.createElement('script')
-    isotopScript.src = 'assets/vendor/isotope-layout/isotope.pkgd.min.js'
 
-    const mainScript  = document.createElement('script')
-    mainScript.src = 'assets/js/main.js'
-
-    document.body.append(isotopScript)
-    document.body.append(mainScript)
-    }, 2000)
 }
 
 
 (async () => {
+
+  document.body.style.overflow = 'auto'
+
     const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
       headers:{                  
         'accept': 'application/json',
@@ -73,14 +67,20 @@ function renderForPortfolios(arr, node) {
 
     const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
 
-    renderForPortfolios(allRandomSlicedData, portfolioList)
+    renderForPortfolios(data, portfolioList)
     renderForPortfolios(data, portfolioContainerSeeMore)
 
+    // setTimeout(() => {
+    //     const isotopeExecuteCode  = document.createElement('script')
+    //     isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
+    
+       
+    //     document.body.append(isotopeExecuteCode)
+    //   }, 2000)
 
-      document.body.style.overflow = 'auto'
 
-      const allImages = document.querySelectorAll('.portfolio-img')
 
+      // const allImages = document.querySelectorAll('.portfolio-img')
     //   allImages.forEach(item => {
     //     console.log(item.complete);
     // })

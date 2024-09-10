@@ -8,8 +8,7 @@ const testimonialItemList = document.querySelector('.testimonial-item-template-l
 
 
 function renderForResumeEducation( arr, node, template ) {
-
-  node.innerHTML = null
+  node.innerHTML = ''
   const fragment = document.createDocumentFragment()
 
   arr.forEach(item => {
@@ -114,6 +113,8 @@ function renderForTestimonial( arr, node, template ) {
   const dataTestimonialItem = await requestTestimonialItem.json()
   renderForTestimonial(dataTestimonialItem, testimonialItemList, testimonialItemTemplate)
 })()
+
+
 
 
 
