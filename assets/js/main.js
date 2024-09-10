@@ -14,8 +14,6 @@
   }
 
 
- 
-
   /**
    * Easy event listener function
    */
@@ -95,34 +93,22 @@
   })
   
 
-  let counter = 0
+
   // // navbar hiding and showing side by scrolling
   document.addEventListener('scroll', function (evt) {
-  if(window.scrollY == 0) {
-    select('.mobile-nav-toggle').click()
-  }
-  else {
-      // if(counter == 0){
-      //   document.querySelector('.exterior').click()
-      //   counter++
-      
-      // }
-      // if(counter == 1){
-      //   document.querySelector('.all').click()
-      //   counter++
-      // }
-      select('body').classList.remove('mobile-nav-active')
-      select('.mobile-nav-toggle').classList.remove('bi-x')
-      select('.mobile-nav-toggle').classList.add('bi-list')
-   
-  }
+    if(window.scrollY == 0) {
+      select('.mobile-nav-toggle').click()
+    }
+    else {
+        select('body').classList.remove('mobile-nav-active')
+        select('.mobile-nav-toggle').classList.remove('bi-x')
+        select('.mobile-nav-toggle').classList.add('bi-list')
+    }
   })  
   // end navbar hiding and showing side by scrolling
 
-
   
   const hero = document.querySelector('#hero')
-
   hero.addEventListener('click', (evt) => {
     select('body').classList.remove('mobile-nav-active')
   })
@@ -192,15 +178,11 @@
   }
 
   // ---------------------------------------- FIRST SIDE ---------------------------------
-const portfoliosTemplate = document.querySelector('#portfolios').content
-const portfolioList = document.querySelector('.portfolio-container')
-const portfolioItem = document.querySelectorAll('.portfolio-item')
+
 const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__img').content
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
 const caruselTemplate = document.querySelector('#carusel-template').content
 const caruselList = document.querySelector('.carousel-inner')
-const testimonialItemTemplate = document.querySelector('#testimonial-item-template').content
-const testimonialItemList = document.querySelector('.testimonial-item-template-list')
 
 const titlePortfolioDetails = document.querySelector('.title-portfolio-details')
 const locationPortfoioDetails = document.querySelector('.location-portfolio-details')
@@ -218,7 +200,6 @@ const portfolioContainerSeeMore = document.querySelector('.portfolio-container-s
  /**
    * Porfolio isotope and filter
    */  
-
  let portfolioContainer = select('.portfolio-container');
 
  let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -243,40 +224,32 @@ const portfolioContainerSeeMore = document.querySelector('.portfolio-container-s
    });
  }, true);
 
+// see more side ----------------------------------------------------------
+ let portfolioContainerSeeMoreList = select('.portfolio-container-see-more');
+ let portfolioIsotopeSeeMore = new Isotope(portfolioContainerSeeMoreList, {
+   itemSelector: '.portfolio-item'
+ });
 
+ let portfolioFiltersSeeMore = select('#portfolio-flters li', true);
 
+ on('click', '#portfolio-flters li', function(e) {
+   e.preventDefault();
+   portfolioFiltersSeeMore.forEach(function(el) {
+     el.classList.remove('filter-active');
+   });
+   this.classList.add('filter-active');
 
-function renderForPortfolios(arr, node) {
+   portfolioIsotopeSeeMore.arrange({
+     filter: this.getAttribute('data-filter')
+   });
+   
+   portfolioIsotopeSeeMore.on('arrangeComplete', function() {
+     AOS.refresh()
+   });
+ }, true);
 
-    node.innerHTML = '';
-    const fragment = document.createDocumentFragment()
+ 
 
-    arr.forEach(item => {
-        const { title, cropped_photo, project_type, id } = item
-        const clonePortfolios = portfoliosTemplate.cloneNode(true)
-        // const testImg = document.createElement('img');
-
-        clonePortfolios.querySelector('.portfolio-wrapper').classList.add(`${project_type}`)
-
-        // testImg.src = cropped_photo
-        // let aspecRatio = testImg.naturalHeight / testImg.naturalWidth;  
-
-        // clonePortfolios.querySelector('.portfolio-img').height = `${Math.abs(362 * aspecRatio)}`
-        clonePortfolios.querySelector('.portfolio-img').src = cropped_photo
-        clonePortfolios.querySelector('.portfolio-location').textContent = title
-        clonePortfolios.querySelector('.before').id = id
-
-        fragment.appendChild(clonePortfolios)
-    })
-
-    let fragmentArr = []
-    for(let item of fragment.children) {
-        fragmentArr.push(item);
-    }
-
-    node.appendChild(fragment)
-  
-}
 
 function renderForPortfolioDetailsImg(data, node, template) {
   const {location, description, url, title, photos } = data
@@ -302,153 +275,31 @@ function renderForPortfolioDetailsImg(data, node, template) {
   node.appendChild(fragment)
 }
 
-function renderForTestimonial( arr, node, template ) {
-
-  node.innerHTML = null
-  const fragment = document.createDocumentFragment()
-
-  arr.forEach(item => {
-      const { job, full_name, avatar, comment } = item
-      const cloneTemplate = template.cloneNode(true)
-
-      cloneTemplate.querySelector('.testimonial-item__comment').textContent = comment
-      cloneTemplate.querySelector('.testimonial-item__full_name').textContent = full_name
-      cloneTemplate.querySelector('.testimonial-item__job').textContent = job
-      cloneTemplate.querySelector('.testimonial-item__avatar').src = avatar
-
-
-      fragment.appendChild(cloneTemplate)
-  })
-
-  node.appendChild(fragment)
-}
-
-
-
-
-
-(async () => {
-    const request = await fetch('https://test.itpoint.uz/api/project/?type=all', {
-      headers:{                  
-        'accept': 'application/json',
-        'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
-      }  
-    })
-
-    const data = await request.json()
-
- 
-    const interiorData = await data.filter(item => item.project_type == 'interior')
-          .sort((a, b) => 0.5 - Math.random());
-    const exteriorData = await data.filter(item => item.project_type == 'exterior')
-          .sort((a, b) => 0.5 - Math.random());
-
-          function sliceData(arr) {
-            if(arr.length > 3){
-              return arr.slice(0, 3)
-            }
-            else {
-              return arr
-            }
-          }
-
-    const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
-
-    
-  // renderForPortfolios(allRandomSlicedData, portfolioList)
-
-          // data.forEach((item, idx) => {
-          //   const { title, cropped_photo, project_type, id } = item
-            
-          //   if(idx < portfolioItem.length){
-          //     portfolioItem[idx].classList.remove('visually-hidden')
-          //     portfolioItem[idx].classList.add(`${project_type}`)
-          //     portfolioItem[idx].querySelector('.portfolio-img').src = cropped_photo
-          //     portfolioItem[idx].querySelector('.portfolio-location').textContent = title
-          //     portfolioItem[idx].querySelector('.before').id = id
-          //   }
-         
-          // })
-  
-   
-
-  
-
-     /**
-   * Porfolio isotope and filter
-   */  
-    let portfolioIsotope = new Isotope(portfolioContainerSeeMore, {
-      itemSelector: '.portfolio-item'
-    });
-
-    let portfolioFilters = select('#portfolio-flters li', true);
-
-    on('click', '#portfolio-flters li', function(e) {
-      e.preventDefault();
-      portfolioFilters.forEach(function(el) {
-        el.classList.remove('filter-active');
-      });
-      this.classList.add('filter-active');
-
-      portfolioIsotope.arrange({
-        filter: this.getAttribute('data-filter')
-      });
-      
-      portfolioIsotope.on('arrangeComplete', function() {
-        AOS.refresh()
-      });
-    }, true);
-
-   
- 
-
-    // renderForPortfolios(data, portfolioContainerSeeMore)
-        
-
-
-      document.body.style.overflow = 'auto'
-
-
-
-  //--------------------------------------------------------------------------------------------------
-  // data fetching for testimonial side
-  const requestTestimonialItem = await fetch('https://test.itpoint.uz/api/commentary', {
-    headers:{
-      'accept': 'application/json',
-      'X-CSRFToken': 'GJcGnVz5mEfkDnWaTRFbsVdUAXq9FxU5Iw07Jk9Sv2bPuvKw7Fp2uOlyozpuOx6V'
-    }  
-  })
-
-  const dataTestimonialItem = await requestTestimonialItem.json()
-  renderForTestimonial(dataTestimonialItem, testimonialItemList, testimonialItemTemplate)
-
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
+new Swiper('.testimonials-slider', {
+  speed: 600,
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  slidesPerView: 'auto',
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
     },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
 
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 20
     }
-  });
-
-})()
+  }
+});
 
 seeMore.addEventListener('click', () => {
   closeIcon.style.display = 'block'
@@ -470,8 +321,6 @@ seeMore.addEventListener('click', () => {
   // },20000)  
 })
 
-
-
 closeIcon.addEventListener('click', () => {
   closeIcon.style.display = 'none'
   displayNoneForSeeMore.forEach(item => {
@@ -487,9 +336,6 @@ closeIcon.addEventListener('click', () => {
   counter = 0
 })
 
-
-
-
 window.addEventListener('DOMContentLoaded', () => {
   
   const imgShowing  = document.querySelector('.img-showing')
@@ -498,8 +344,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const portfolioContainer = document.querySelector('.portfolio-container')
   const closeBtn = document.querySelector('.img-showing__close')
   const closeP = document.querySelector('.closeP')
-
-
 
 
 //------------------------ portfolios openning and closing side -------------------------
@@ -579,10 +423,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   
   //--------------------- showing and hiding side when clicking --------------------------
-
-
-
-  
   closeBtn.addEventListener('click', () => {
     imgShowing.style.display = 'none'
     mainWrapper.style.display = 'none'

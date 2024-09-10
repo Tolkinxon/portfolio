@@ -1,6 +1,8 @@
 const portfolioItem = document.querySelectorAll('.portfolio-item')
 const portfolioList = document.querySelector('.portfolio-container')
+const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
 const portfoliosTemplate = document.querySelector('#portfolios').content
+
 
 function renderForPortfolios(arr, node) {
 
@@ -42,11 +44,6 @@ function renderForPortfolios(arr, node) {
     document.body.append(isotopScript)
     document.body.append(mainScript)
     }, 2000)
-
-
-
-  
-  
 }
 
 
@@ -60,20 +57,24 @@ function renderForPortfolios(arr, node) {
 
     const data = await request.json()
 
-        //   data.forEach((item, idx) => {
-        //     const { title, cropped_photo, project_type, id } = item
-            
-        //     if(idx < portfolioItem.length){
-        //       portfolioItem[idx].classList.remove('visually-hidden')
-        //       portfolioItem[idx].classList.add(`${project_type}`)
-        //       portfolioItem[idx].querySelector('.portfolio-img').src = cropped_photo
-        //       portfolioItem[idx].querySelector('.portfolio-location').textContent = title
-        //       portfolioItem[idx].querySelector('.before').id = id
-        //     }
-         
-        //   })
+    const interiorData = await data.filter(item => item.project_type == 'interior')
+    .sort((a, b) => 0.5 - Math.random());
+    const exteriorData = await data.filter(item => item.project_type == 'exterior')
+    .sort((a, b) => 0.5 - Math.random());
 
-    renderForPortfolios(data, portfolioList)
+    function sliceData(arr) {
+      if(arr.length > 3){
+        return arr.slice(0, 3)
+      }
+      else {
+        return arr
+      }
+    }
+
+    const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
+
+    renderForPortfolios(allRandomSlicedData, portfolioList)
+    renderForPortfolios(data, portfolioContainerSeeMore)
 
 
       document.body.style.overflow = 'auto'
@@ -83,11 +84,6 @@ function renderForPortfolios(arr, node) {
     //   allImages.forEach(item => {
     //     console.log(item.complete);
     // })
-
-     
-
-
-
 })()
 
 
