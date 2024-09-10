@@ -70,13 +70,13 @@ function renderForPortfolios(arr, node) {
     renderForPortfolios(data, portfolioList)
     renderForPortfolios(data, portfolioContainerSeeMore)
 
-    // setTimeout(() => {
-    //     const isotopeExecuteCode  = document.createElement('script')
-    //     isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
+    setTimeout(() => {
+        const isotopeExecuteCode  = document.createElement('script')
+        isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
     
        
-    //     document.body.append(isotopeExecuteCode)
-    //   }, 2000)
+        document.body.append(isotopeExecuteCode)
+      }, 2000)
 
 
 

@@ -183,6 +183,8 @@ const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
 const caruselTemplate = document.querySelector('#carusel-template').content
 const caruselList = document.querySelector('.carousel-inner')
+const portfolioContainer = document.querySelector('.portfolio-container')
+
 
 const titlePortfolioDetails = document.querySelector('.title-portfolio-details')
 const locationPortfoioDetails = document.querySelector('.location-portfolio-details')
@@ -298,7 +300,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const imgShowing  = document.querySelector('.img-showing')
   const wrapper = document.querySelector('.wrapper')
   const mainWrapper = document.querySelector('.main-wrapper')
-  const portfolioContainer = document.querySelector('.portfolio-container')
   const closeBtn = document.querySelector('.img-showing__close')
   const closeP = document.querySelector('.closeP')
 
