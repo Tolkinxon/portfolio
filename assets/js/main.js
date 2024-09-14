@@ -345,7 +345,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // })
 
         // codes for zoom-in and zoom-out
-        const carusel = document.querySelector('#carouselExampleIndicators')
+        // const carusel = document.querySelector('#carouselExampleIndicators')
         // const imgCarusel = document.querySelectorAll('.img-carusel')
 
         // imgCarusel.forEach(item => {
@@ -376,13 +376,13 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 //------------------------ portfolios openning and closing side -------------------------
 
-const caruselItem = document.querySelector('.carousel-item');
+// const caruselItem = document.querySelector('.carousel-item');
 portfolioDetailsImgList.addEventListener('click', function(evt){
   if(evt.target.matches('.img-carusel')){
     imgShowing.style.display = 'block'
     mainWrapper.style.display = 'none'
     wrapper.style.display = 'none'
-    caruselItem.append(evt.target)
+    
   }
 })
 

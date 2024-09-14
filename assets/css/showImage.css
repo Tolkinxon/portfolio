@@ -10,13 +10,14 @@
     top: 0px; 
     left: 0px;
     overflow-x: hidden;
+    z-index: 99999;
 }
 
-#carouselExampleIndicators {
+/* #carouselExampleIndicators {
     width: 50%;
     height: 100%;
     object-fit: contain;
-}
+} */
 
 .zoom {
     width: 100% !important;
