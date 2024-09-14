@@ -307,7 +307,7 @@ window.addEventListener('DOMContentLoaded', () => {
 //------------------------ portfolios openning and closing side -------------------------
   portfolioContainer.addEventListener('click', (evt) => {
     if(evt.target.matches('.before')){
-      // imgShowing.style.display = 'none'
+      imgShowing.style.display = 'none'
       mainWrapper.style.display = 'none'
       wrapper.style.display = 'block'
       const id = evt.target.id
@@ -324,28 +324,28 @@ window.addEventListener('DOMContentLoaded', () => {
         const data = await request.json()
 
         renderForPortfolioDetailsImg(data, portfolioDetailsImgList, portfolioDetailsImgTemplate)
-        renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
+        // renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
  
 
-        const img = document.querySelectorAll('.img')
-        img.forEach(item => {
-          item.addEventListener('click', () => {
-            imgShowing.style.display = 'flex'
-            imgShowing.querySelectorAll('.img-carusel').forEach(itemCarusel => {
-              if(itemCarusel.id == item.id){
-                itemCarusel.parentElement.classList.add('active')
-              }
-              else {
-                itemCarusel.parentElement.classList.remove('active')
-              }
-            })
-            mainWrapper.style.display = 'none'
-            wrapper.style.display = 'none'
-        }) 
-        })
+        // const img = document.querySelectorAll('.img')
+        // img.forEach(item => {
+        //   item.addEventListener('click', () => {
+        //     imgShowing.style.display = 'flex'
+        //     imgShowing.querySelectorAll('.img-carusel').forEach(itemCarusel => {
+        //       if(itemCarusel.id == item.id){
+        //         itemCarusel.parentElement.classList.add('active')
+        //       }
+        //       else {
+        //         itemCarusel.parentElement.classList.remove('active')
+        //       }
+        //     })
+        //     mainWrapper.style.display = 'none'
+        //     wrapper.style.display = 'none'
+        // }) 
+        // })
 
         // codes for zoom-in and zoom-out
-        // const carusel = document.querySelector('#carouselExampleIndicators')
+        const carusel = document.querySelector('#carouselExampleIndicators')
         // const imgCarusel = document.querySelectorAll('.img-carusel')
 
         // imgCarusel.forEach(item => {
@@ -376,16 +376,24 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 //------------------------ portfolios openning and closing side -------------------------
 
-
+const caruselItem = document.querySelector('.carousel-item');
+portfolioDetailsImgList.addEventListener('click', function(evt){
+  if(evt.target.matches('.img-carusel')){
+    imgShowing.style.display = 'block'
+    mainWrapper.style.display = 'none'
+    wrapper.style.display = 'none'
+    caruselItem.append(evt.target)
+  }
+})
 
 
   
-  //--------------------- showing and hiding side when clicking --------------------------
-  // closeBtn.addEventListener('click', () => {
-  //   imgShowing.style.display = 'none'
-  //   mainWrapper.style.display = 'none'
-  //   wrapper.style.display = 'block'
-  // }) 
+  // --------------------- showing and hiding side when clicking --------------------------
+  closeBtn.addEventListener('click', () => {
+    imgShowing.style.display = 'none'
+    mainWrapper.style.display = 'none'
+    wrapper.style.display = 'block'
+  }) 
   
   closeP.addEventListener('click', () => {
     imgShowing.style.display = 'none'
