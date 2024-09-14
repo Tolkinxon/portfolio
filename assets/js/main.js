@@ -182,7 +182,7 @@
 const portfolioDetailsImgTemplate = document.querySelector('#portfolio-details__img').content
 const portfolioDetailsImgList = document.querySelector('.swiper-wrapper-for-porfolio-details')
 const caruselTemplate = document.querySelector('#carusel-template').content
-const caruselList = document.querySelector('.carousel-inner')
+// const caruselList = document.querySelector('.carousel-inner')
 const portfolioContainer = document.querySelector('.portfolio-container')
 
 
@@ -209,10 +209,10 @@ function renderForPortfolioDetailsImg(data, node, template) {
   titlePortfolioDetails.textContent = title
   locationPortfoioDetails.textContent = location
   descriptionPortfoioDetails.textContent = description
-  urlPortfoioDetails.textContent = url
+  // urlPortfoioDetails.textContent = url
 
 
-  node.innerHTML = null
+  node.innerHTML = '';
   const fragment = document.createDocumentFragment()
 
   photos.forEach(item => {
@@ -307,7 +307,7 @@ window.addEventListener('DOMContentLoaded', () => {
 //------------------------ portfolios openning and closing side -------------------------
   portfolioContainer.addEventListener('click', (evt) => {
     if(evt.target.matches('.before')){
-      imgShowing.style.display = 'none'
+      // imgShowing.style.display = 'none'
       mainWrapper.style.display = 'none'
       wrapper.style.display = 'block'
       const id = evt.target.id
@@ -322,7 +322,7 @@ window.addEventListener('DOMContentLoaded', () => {
         })
   
         const data = await request.json()
- 
+
         renderForPortfolioDetailsImg(data, portfolioDetailsImgList, portfolioDetailsImgTemplate)
         renderForPortfolioDetailsImg(data, caruselList, caruselTemplate)
  
@@ -345,15 +345,15 @@ window.addEventListener('DOMContentLoaded', () => {
         })
 
         // codes for zoom-in and zoom-out
-        const carusel = document.querySelector('#carouselExampleIndicators')
-        const imgCarusel = document.querySelectorAll('.img-carusel')
+        // const carusel = document.querySelector('#carouselExampleIndicators')
+        // const imgCarusel = document.querySelectorAll('.img-carusel')
 
-        imgCarusel.forEach(item => {
-          item.addEventListener('click', ()=>{
-            carusel.classList.toggle('zoom')
-            item.classList.toggle('zoom-out')
-          })
-        })
+        // imgCarusel.forEach(item => {
+        //   item.addEventListener('click', ()=>{
+        //     carusel.classList.toggle('zoom')
+        //     item.classList.toggle('zoom-out')
+        //   })
+        // })
         // end codes for zoom-in and zoom-out
 
         new Swiper('.portfolio-details-slider', {
@@ -381,11 +381,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
   
   //--------------------- showing and hiding side when clicking --------------------------
-  closeBtn.addEventListener('click', () => {
-    imgShowing.style.display = 'none'
-    mainWrapper.style.display = 'none'
-    wrapper.style.display = 'block'
-  }) 
+  // closeBtn.addEventListener('click', () => {
+  //   imgShowing.style.display = 'none'
+  //   mainWrapper.style.display = 'none'
+  //   wrapper.style.display = 'block'
+  // }) 
   
   closeP.addEventListener('click', () => {
     imgShowing.style.display = 'none'

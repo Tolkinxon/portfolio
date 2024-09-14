@@ -80,31 +80,31 @@ portfolioFilters.forEach(function(filter) {
 });
 
 // See more side ----------------------------------------------------------
-let portfolioContainerSeeMoreList = document.querySelector('.portfolio-container-see-more');
+// let portfolioContainerSeeMoreList = document.querySelector('.portfolio-container-see-more');
 
-let portfolioIsotopeSeeMore = new Isotope(portfolioContainerSeeMoreList, {
-  itemSelector: '.portfolio-item'
-});
+// let portfolioIsotopeSeeMore = new Isotope(portfolioContainerSeeMoreList, {
+//   itemSelector: '.portfolio-item'
+// });
 
-let portfolioFiltersSeeMore = document.querySelectorAll('#portfolio-flters li');
+// let portfolioFiltersSeeMore = document.querySelectorAll('#portfolio-flters li');
 
-portfolioFiltersSeeMore.forEach(function(filter) {
-  filter.addEventListener('click', function(e) {
-    e.preventDefault();
-    portfolioFiltersSeeMore.forEach(function(el) {
-      el.classList.remove('filter-active');
-    });
-    this.classList.add('filter-active');
+// portfolioFiltersSeeMore.forEach(function(filter) {
+//   filter.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     portfolioFiltersSeeMore.forEach(function(el) {
+//       el.classList.remove('filter-active');
+//     });
+//     this.classList.add('filter-active');
 
-    portfolioIsotopeSeeMore.arrange({
-      filter: this.getAttribute('data-filter')
-    });
+//     portfolioIsotopeSeeMore.arrange({
+//       filter: this.getAttribute('data-filter')
+//     });
 
-    // portfolioIsotopeSeeMore.on('arrangeComplete', function() {
-    //   AOS.refresh();
-    // });
-  });
-});
+//     // portfolioIsotopeSeeMore.on('arrangeComplete', function() {
+//     //   AOS.refresh();
+//     // });
+//   });
+// });
 
 
 console.log('hello wolrd');

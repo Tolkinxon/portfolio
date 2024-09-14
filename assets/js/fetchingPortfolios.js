@@ -76,7 +76,7 @@ function renderForPortfolios(arr, node) {
     
        
         document.body.append(isotopeExecuteCode)
-      }, 2000)
+      }, 3000)
 
 
 
