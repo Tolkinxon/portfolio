@@ -296,7 +296,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const imgShowing  = document.querySelector('.img-showing')
   const wrapper = document.querySelector('.wrapper')
   const mainWrapper = document.querySelector('.main-wrapper')
-  const closeBtn = document.querySelector('.img-showing__close')
   const closeP = document.querySelector('.closeP')
 
 
@@ -378,19 +377,25 @@ portfolioDetailsImgList.addEventListener('click', function(evt){
     mainWrapper.style.display = 'none'
     wrapper.style.display = 'none'
     imgShowing.style.display = 'block'
+    
     caruselItem.innerHTML = ''
-    caruselItem.append(evt.target)
+    let clone = evt.target.cloneNode(true);
+    clone.classList.add('img-carusel__close')
+    clone.classList.add('zoom-out')
+    caruselItem.append(clone)
   }
-})
 
+  const closeBtn = document.querySelector('.img-carusel__close')
 
-  
-  // --------------------- showing and hiding side when clicking --------------------------
   closeBtn.addEventListener('click', () => {
     imgShowing.style.display = 'none'
     mainWrapper.style.display = 'none'
     wrapper.style.display = 'block'
   }) 
+})
+  
+  // --------------------- showing and hiding side when clicking --------------------------
+
   
   closeP.addEventListener('click', () => {
     imgShowing.style.display = 'none'

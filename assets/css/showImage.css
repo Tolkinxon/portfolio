@@ -10,8 +10,6 @@
     /* position: absolute;  */
     width: 100%; 
     height: 100%; 
-    background: black; 
-    z-index: 999;  
     align-items: center; 
     justify-content: center;  
     display: none; 
@@ -24,7 +22,7 @@
     object-fit: contain;
 } */
 
-.zoom {
+/* .zoom {
     width: 100% !important;
 
 }
@@ -35,13 +33,13 @@
 
 .zoom .carousel-item {
     height: auto;
-}
+} */
 
-.carousel-inner {
+/* .carousel-inner {
     width: 100% !important;
     height: 100%;
     object-fit: contain;
-}
+} */
 
 .carousel-item {
     width: 100%;
@@ -49,32 +47,30 @@
     /* object-fit: contain; */
 }
 
-.img-showing__close {
+/* .img-showing__close {
     position: absolute; 
     right: 5%; 
     top: 5%;
-}
+} */
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
     #carouselExampleIndicators {
         width: 100%;
         height: 70%;
     }    
-} 
+}  */
 
-.carousel-control-prev {
+/* .carousel-control-prev {
     left: -15%;
-}
+} */
 
-.carousel-control-next {
+/* .carousel-control-next {
     right: -15%;
-}
+} */
 
 
 .img-carusel {
-
     cursor: zoom-in;
- 
 }
 
 .zoom-out {
