@@ -196,10 +196,6 @@ const seeMore = document.querySelector('.portfolio__see-more')
 const displayNoneForSeeMore = document.querySelectorAll('.display-none-for-see-more')
 const closeIcon = document.querySelector('.close-icon')
 const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
-
-
-
-
  
 
 
@@ -307,9 +303,9 @@ window.addEventListener('DOMContentLoaded', () => {
 //------------------------ portfolios openning and closing side -------------------------
   portfolioContainer.addEventListener('click', (evt) => {
     if(evt.target.matches('.before')){
-      imgShowing.style.display = 'none'
       mainWrapper.style.display = 'none'
       wrapper.style.display = 'block'
+      imgShowing.style.display = 'none'
       const id = evt.target.id
 
 
@@ -376,13 +372,14 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 //------------------------ portfolios openning and closing side -------------------------
 
-// const caruselItem = document.querySelector('.carousel-item');
+const caruselItem = document.querySelector('.carusel-item');
 portfolioDetailsImgList.addEventListener('click', function(evt){
   if(evt.target.matches('.img-carusel')){
-    imgShowing.style.display = 'block'
     mainWrapper.style.display = 'none'
     wrapper.style.display = 'none'
-    
+    imgShowing.style.display = 'block'
+    caruselItem.innerHTML = ''
+    caruselItem.append(evt.target)
   }
 })
 
