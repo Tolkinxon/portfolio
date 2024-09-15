@@ -107,4 +107,3 @@ portfolioFilters.forEach(function(filter) {
 // });
 
 
-console.log('hello wolrd');

@@ -384,15 +384,15 @@ portfolioDetailsImgList.addEventListener('click', function(evt){
     clone.classList.add('zoom-out')
     caruselItem.append(clone)
   }
+})
 
-  const closeBtn = document.querySelector('.img-carusel__close')
-
-  closeBtn.addEventListener('click', () => {
+caruselItem.addEventListener('click', (evt) => {
+  if(evt.target.matches('.img-carusel__close')){
     imgShowing.style.display = 'none'
     mainWrapper.style.display = 'none'
     wrapper.style.display = 'block'
-  }) 
-})
+  }
+}) 
   
   // --------------------- showing and hiding side when clicking --------------------------
 
