@@ -61,28 +61,28 @@ function renderForPortfolios(arr, node) {
     
 
     const interiorData = await data.filter(item => item.project_type == 'interior')
-    .sort((a, b) => 0.5 - Math.random());
     const exteriorData = await data.filter(item => item.project_type == 'exterior')
-    .sort((a, b) => 0.5 - Math.random());
+
+    const clonedInteriorData = JSON.parse(JSON.stringify(interiorData))
+    const clonedExteriorData = JSON.parse(JSON.stringify(exteriorData))
+    
 
     function sliceData(arr) {
-      if(arr.length > 4){
-        return arr.slice(0, 4)
+      if(arr.length > 5){
+        return arr.slice(0, 5)
       }
       else {
         return arr
       }
     }
-    const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
+    const allRandomSlicedData = [...sliceData(interiorData.sort((a, b) => 0.5 - Math.random())),...sliceData(exteriorData.sort((a, b) => 0.5 - Math.random()))]
 
     
     if(boleanIsRandom){
       renderForPortfolios(allRandomSlicedData, portfolioList)
     } else {
-      renderForPortfolios(data, portfolioList)
+      renderForPortfolios([...sliceData(clonedInteriorData), ...sliceData(clonedExteriorData)], portfolioList)
     }
-
-
     renderForPortfolios(data, portfolioContainerSeeMore)
 
     setTimeout(() => {
@@ -100,5 +100,7 @@ function renderForPortfolios(arr, node) {
     //     console.log(item.complete);
     // })
 })()
+
+
 
 
