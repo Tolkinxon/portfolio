@@ -48,8 +48,17 @@ function renderForPortfolios(arr, node) {
         'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
       }  
     })
-
     const data = await request.json()
+
+    const requestIsRandom = await fetch('https://test.itpoint.uz/api/configuration/', {
+      headers:{                  
+        'accept': 'application/json',
+        'X-CSRFToken': 'fBjcq6LyPdHYWcpgEjeOw97FI7Y31H0wcTEKzS2jZwTJvvtHUjO6GGsOMHIHXHbj'
+      }  
+    })
+    const dataIsRandom = await requestIsRandom.json()
+    let boleanIsRandom = dataIsRandom.at(-1).is_random_order
+    
 
     const interiorData = await data.filter(item => item.project_type == 'interior')
     .sort((a, b) => 0.5 - Math.random());
@@ -57,17 +66,23 @@ function renderForPortfolios(arr, node) {
     .sort((a, b) => 0.5 - Math.random());
 
     function sliceData(arr) {
-      if(arr.length > 3){
-        return arr.slice(0, 3)
+      if(arr.length > 4){
+        return arr.slice(0, 4)
       }
       else {
         return arr
       }
     }
-
     const allRandomSlicedData = [...sliceData(interiorData),...sliceData(exteriorData)]
 
-    renderForPortfolios(data, portfolioList)
+    
+    if(boleanIsRandom){
+      renderForPortfolios(allRandomSlicedData, portfolioList)
+    } else {
+      renderForPortfolios(data, portfolioList)
+    }
+
+
     renderForPortfolios(data, portfolioContainerSeeMore)
 
     setTimeout(() => {
