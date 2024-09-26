@@ -1,9 +1,8 @@
 const portfolioItem = document.querySelectorAll('.portfolio-item')
 const portfolioList = document.querySelector('.portfolio-container')
-// const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
 const portfoliosTemplate = document.querySelector('#portfolios').content
-// const portfoliosSeeMoreTemplate = document.querySelector('#portfolios-see-more').content
 const seeMore = document.querySelector('.portfolio__see-more')
+const closeIcon = document.querySelector('.close-icon')
 
 
 
@@ -27,6 +26,10 @@ function renderForPortfolios(arr, node) {
 
 function addExtraClass(item, category) {
   item.classList.add('all', `sliced-${category}`)
+}
+
+function removeExtraClass(item, category) {
+  item.classList.remove('all', `sliced-${category}`)
 }
 
 
@@ -68,21 +71,15 @@ function addExtraClass(item, category) {
       }
     }
     const allRandomSlicedData = [...sliceData(interiorData.sort((a, b) => 0.5 - Math.random())),...sliceData(exteriorData.sort((a, b) => 0.5 - Math.random()))]
-
-  
-    // if(boleanIsRandom){
-    //   renderForPortfolios(allRandomSlicedData, portfolioList)
-    // } else {
-    //   renderForPortfolios([...sliceData(clonedInteriorData), ...sliceData(clonedExteriorData)], portfolioList)
-    // }
+    const allOrderedSlicedData = [...sliceData(clonedInteriorData), ...sliceData(clonedExteriorData)]
 
     renderForPortfolios(data, portfolioList)
 
-    portfolioList.childNodes.forEach((item, idx) => {
-      if(item.nodeName == '#text'){
-        portfolioList.removeChild(item)
-      }
-    })
+      // if(boleanIsRandom){
+    //   renderForPortfolios(allRandomSlicedData, portfolioList)
+    // } else {
+    //   renderForPortfolios(allOrderedSlicedData, portfolioList)
+    // }
 
     portfolioList.childNodes.forEach((item, idx) => {
       if(item.nodeName == '#text'){
@@ -91,20 +88,54 @@ function addExtraClass(item, category) {
     })
 
     portfolioList.childNodes.forEach((item, idx) => {
-      if(idx > 10) {
-        return
+      if(item.nodeName == '#text'){
+        portfolioList.removeChild(item)
       }
-      addExtraClass(item, data[idx].project_type)
-  })
+    })
+
+
+    if(boleanIsRandom){
+      allRandomSlicedData.forEach(item => {
+        let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
+        addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
+      })
+    } else {
+      allOrderedSlicedData.forEach(item => {
+        let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
+        addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
+      })
+    }
 
     
     
     
-    // seeMore.addEventListener('click', () => {
-    //   portfolioList.childNodes.forEach((item, idx) => {
-    //         item.style.display = 'block';
-    //   })
-    // })
+    seeMore.addEventListener('click', () => {
+      portfolioList.childNodes.forEach((item, idx) => {
+        if(!(item.matches('.all'))) {
+          addExtraClass(item, data[idx].project_type)
+        }
+      })
+    })
+
+    closeIcon.addEventListener('click', () => {
+      portfolioList.childNodes.forEach((item, idx) => {
+          removeExtraClass(item, data[idx].project_type)
+      })
+
+      if(boleanIsRandom){
+        allRandomSlicedData.forEach(item => {
+          let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
+          addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
+        })
+      } else {
+        allOrderedSlicedData.forEach(item => {
+          let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
+          addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
+        })
+      }
+    })
+ 
+  
  
 
       setTimeout(() => {

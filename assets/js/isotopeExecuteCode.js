@@ -80,4 +80,17 @@ portfolioFilters.forEach(function(filter) {
 });
 
 
+portfolioIsotope.arrange({
+  filter: '.all'
+});
+
+closeIcon.addEventListener('click', () => {
+  portfolioIsotope.arrange({
+    filter: '.all'
+  });
+})
+
+
+
+
 

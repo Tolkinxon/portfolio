@@ -283,7 +283,7 @@ closeIcon.addEventListener('click', () => {
   })
   seeMore.classList.remove('visually-hidden')
   portfolioContainer.style.display = 'block'
-  portfolioContainerSeeMore.classList.add('visually-hidden')
+  // portfolioContainerSeeMore.classList.add('visually-hidden')
 
   window.scrollTo({
     top: 0,
