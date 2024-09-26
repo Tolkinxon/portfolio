@@ -143,7 +143,7 @@ function removeExtraClass(item, category) {
         isotopeExecuteCode.classList.add('isotope')
         isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
         document.body.append(isotopeExecuteCode)
-      }, 5000)
+      }, 10000)
 })()
 
 
