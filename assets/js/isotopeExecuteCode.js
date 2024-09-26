@@ -59,7 +59,7 @@ let portfolioIsotope = new Isotope(portfolioContainer, {
   itemSelector: '.portfolio-item'
 });
 
-let portfolioFilters = document.querySelectorAll('#portfolio-flters li');
+let portfolioFilters = document.querySelectorAll('.portfolio-filter-btns');
 
 portfolioFilters.forEach(function(filter) {
   filter.addEventListener('click', function(e) {
@@ -79,31 +79,5 @@ portfolioFilters.forEach(function(filter) {
   });
 });
 
-// See more side ----------------------------------------------------------
-// let portfolioContainerSeeMoreList = document.querySelector('.portfolio-container-see-more');
-
-// let portfolioIsotopeSeeMore = new Isotope(portfolioContainerSeeMoreList, {
-//   itemSelector: '.portfolio-item'
-// });
-
-// let portfolioFiltersSeeMore = document.querySelectorAll('#portfolio-flters li');
-
-// portfolioFiltersSeeMore.forEach(function(filter) {
-//   filter.addEventListener('click', function(e) {
-//     e.preventDefault();
-//     portfolioFiltersSeeMore.forEach(function(el) {
-//       el.classList.remove('filter-active');
-//     });
-//     this.classList.add('filter-active');
-
-//     portfolioIsotopeSeeMore.arrange({
-//       filter: this.getAttribute('data-filter')
-//     });
-
-//     // portfolioIsotopeSeeMore.on('arrangeComplete', function() {
-//     //   AOS.refresh();
-//     // });
-//   });
-// });
 
 

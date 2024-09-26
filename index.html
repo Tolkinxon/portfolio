@@ -105,9 +105,9 @@
             <div class="row">
               <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
-                  <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".exterior">Exterior</li>
-                  <li data-filter=".interior">Interior</li>
+                  <li class="portfolio-filter-btns filter-active" data-filter=".all" >All</li>
+                  <li class="portfolio-filter-btns" data-filter=".sliced-exterior">Exterior</li>
+                  <li class="portfolio-filter-btns" data-filter=".sliced-interior">Interior</li>
                 </ul>
               </div>
             </div>
@@ -132,21 +132,15 @@
               </template>
             </div>
 
-            <div class="row  portfolio-container-see-more visually-hidden">
-              <div class="d-flex justify-content-center align-items-center portfolio-loader-wrapper" style="height: 200px;">
-                <div class="loader"></div>
-              </div>
-            </div>
-
-            <script src="assets/js/fetchingPortfolios.js"></script>
-
-
             <div class="portfolio__see-more-wrapper">
-              <p class="portfolio__see-more">See more</p>
+              <p class="portfolio-filter-btns portfolio__see-more" data-filter="*">See more</p>
             </div>
           </div><!-- End Portfolio Section -->
         </div>
       </div>
+
+      <script src="assets/js/fetchingPortfolios.js"></script>
+
       
       <div id="about" class="body display-none-for-see-more">
         <!-- ======= About Section ======= -->

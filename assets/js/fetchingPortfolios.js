@@ -1,7 +1,10 @@
 const portfolioItem = document.querySelectorAll('.portfolio-item')
 const portfolioList = document.querySelector('.portfolio-container')
-const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
+// const portfolioContainerSeeMore = document.querySelector('.portfolio-container-see-more')
 const portfoliosTemplate = document.querySelector('#portfolios').content
+// const portfoliosSeeMoreTemplate = document.querySelector('#portfolios-see-more').content
+const seeMore = document.querySelector('.portfolio__see-more')
+
 
 
 function renderForPortfolios(arr, node) {
@@ -12,29 +15,18 @@ function renderForPortfolios(arr, node) {
     arr.forEach(item => {
         const { title, cropped_photo, project_type, id } = item
         const clonePortfolios = portfoliosTemplate.cloneNode(true)
-        // const testImg = document.createElement('img');
-
         clonePortfolios.querySelector('.portfolio-wrapper').classList.add(`${project_type}`)
-
-        // testImg.src = cropped_photo
-        // let aspecRatio = testImg.naturalHeight / testImg.naturalWidth;  
-
-        // clonePortfolios.querySelector('.portfolio-img').height = `${Math.abs(362 * aspecRatio)}`
         clonePortfolios.querySelector('.portfolio-img').src = cropped_photo
         clonePortfolios.querySelector('.portfolio-location').textContent = title
         clonePortfolios.querySelector('.before').id = id
 
-        fragment.appendChild(clonePortfolios)
+        fragment.append(clonePortfolios)
     })
-
-    let fragmentArr = []
-    for(let item of fragment.children) {
-        fragmentArr.push(item);
-    }
-
     node.appendChild(fragment)
+}
 
-
+function addExtraClass(item, category) {
+  item.classList.add('all', `sliced-${category}`)
 }
 
 
@@ -77,28 +69,50 @@ function renderForPortfolios(arr, node) {
     }
     const allRandomSlicedData = [...sliceData(interiorData.sort((a, b) => 0.5 - Math.random())),...sliceData(exteriorData.sort((a, b) => 0.5 - Math.random()))]
 
-    
-    if(boleanIsRandom){
-      renderForPortfolios(allRandomSlicedData, portfolioList)
-    } else {
-      renderForPortfolios([...sliceData(clonedInteriorData), ...sliceData(clonedExteriorData)], portfolioList)
-    }
-    renderForPortfolios(data, portfolioContainerSeeMore)
+  
+    // if(boleanIsRandom){
+    //   renderForPortfolios(allRandomSlicedData, portfolioList)
+    // } else {
+    //   renderForPortfolios([...sliceData(clonedInteriorData), ...sliceData(clonedExteriorData)], portfolioList)
+    // }
 
-    setTimeout(() => {
-        const isotopeExecuteCode  = document.createElement('script')
-        isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
+    renderForPortfolios(data, portfolioList)
+
+    portfolioList.childNodes.forEach((item, idx) => {
+      if(item.nodeName == '#text'){
+        portfolioList.removeChild(item)
+      }
+    })
+
+    portfolioList.childNodes.forEach((item, idx) => {
+      if(item.nodeName == '#text'){
+        portfolioList.removeChild(item)
+      }
+    })
+
+    portfolioList.childNodes.forEach((item, idx) => {
+      if(idx > 10) {
+        return
+      }
+      addExtraClass(item, data[idx].project_type)
+  })
+
     
-       
+    
+    
+    // seeMore.addEventListener('click', () => {
+    //   portfolioList.childNodes.forEach((item, idx) => {
+    //         item.style.display = 'block';
+    //   })
+    // })
+ 
+
+      setTimeout(() => {
+        const isotopeExecuteCode  = document.createElement('script')
+        isotopeExecuteCode.classList.add('isotope')
+        isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
         document.body.append(isotopeExecuteCode)
       }, 3000)
-
-
-
-      // const allImages = document.querySelectorAll('.portfolio-img')
-    //   allImages.forEach(item => {
-    //     console.log(item.complete);
-    // })
 })()
 
 
