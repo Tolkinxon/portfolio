@@ -54,6 +54,8 @@
  * Portfolio isotope and filter
  */
 let portfolioContainer = document.querySelector('.portfolio-container');
+const allBtn = document.querySelector('[data-filter=".all"]')
+
 
 let portfolioIsotope = new Isotope(portfolioContainer, {
   itemSelector: '.portfolio-item'
@@ -88,8 +90,16 @@ closeIcon.addEventListener('click', () => {
   portfolioIsotope.arrange({
     filter: '.all'
   });
+  allBtn.classList.add('filter-active')
 })
 
+
+seeMore.addEventListener('click', () => {
+  portfolioIsotope.arrange({
+    filter: '.all'
+  });
+  allBtn.classList.add('filter-active')
+})
 
 
 
