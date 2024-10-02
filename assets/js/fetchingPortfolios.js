@@ -1,5 +1,6 @@
 const portfolioItem = document.querySelectorAll('.portfolio-item')
 const portfolioList = document.querySelector('.portfolio-container')
+const portfolioListTemporary = document.querySelector('.portfolio-container-temporary')
 const portfoliosTemplate = document.querySelector('#portfolios').content
 const seeMore = document.querySelector('.portfolio__see-more')
 const closeIcon = document.querySelector('.close-icon')
@@ -95,11 +96,13 @@ function removeExtraClass(item, category) {
 
 
     if(boleanIsRandom){
+      renderForPortfolios(allRandomSlicedData, portfolioListTemporary)
       allRandomSlicedData.forEach(item => {
         let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
         addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
       })
     } else {
+      renderForPortfolios(allOrderedSlicedData, portfolioListTemporary)
       allOrderedSlicedData.forEach(item => {
         let idx = data.findIndex(itemFindIndex => itemFindIndex.id == item.id)
         addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
@@ -133,9 +136,7 @@ function removeExtraClass(item, category) {
           addExtraClass(portfolioList.childNodes[idx], data[idx].project_type)
         })
       }
-    })
- 
-  
+    }) 
  
 
       setTimeout(() => {
@@ -143,7 +144,10 @@ function removeExtraClass(item, category) {
         isotopeExecuteCode.classList.add('isotope')
         isotopeExecuteCode.src = 'assets/js/isotopeExecuteCode.js'
         document.body.append(isotopeExecuteCode)
-      }, 10000)
+
+        portfolioList.classList.remove('visually-hidden')
+        portfolioListTemporary.classList.add('visually-hidden')
+      }, 7000)
 })()
 
 
