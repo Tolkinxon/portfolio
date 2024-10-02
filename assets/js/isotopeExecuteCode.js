@@ -90,7 +90,7 @@ closeIcon.addEventListener('click', () => {
   portfolioIsotope.arrange({
     filter: '.all'
   });
-  allBtn.classList.add('filter-active')
+  allBtn.click();
 })
 
 
@@ -98,7 +98,7 @@ seeMore.addEventListener('click', () => {
   portfolioIsotope.arrange({
     filter: '.all'
   });
-  allBtn.classList.add('filter-active')
+  allBtn.click();
 })
 
 
