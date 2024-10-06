@@ -99,7 +99,7 @@ seeMore.addEventListener('click', () => {
     filter: '.all'
   });
   allBtn.click();
-})
+}) 
 
 
 
